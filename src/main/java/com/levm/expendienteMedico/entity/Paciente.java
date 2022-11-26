@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class Paciente {
 	
 	@Id
-	private int id;
+	private int noExpediente;
 	
 	private String nombre;
 	private String apellidoMat;
@@ -19,9 +19,9 @@ public class Paciente {
 		super();
 	}
 
-	public Paciente(int id) {
+	public Paciente(int noExpediente) {
 		super();
-		this.id = id;
+		this.noExpediente = noExpediente;
 	}
 
 	public Paciente(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
