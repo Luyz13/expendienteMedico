@@ -6,13 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.levm.expendienteMedico.entity.Paciente;
-import com.levm.expendienteMedico.repository.PacienteRepository;
+import com.levm.expendienteMedico.repository.PacienteRepositoryImp;
 
 @Service
 public class PacienteService {
 	
 	@Autowired
-	private PacienteRepository pacienteRepository;
+	private PacienteRepositoryImp pacienteRepository;
 
 	public List<Paciente> buscarPacientes() {
 		return pacienteRepository.buscarPacientes();

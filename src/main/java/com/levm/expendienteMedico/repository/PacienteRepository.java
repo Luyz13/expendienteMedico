@@ -2,43 +2,19 @@ package com.levm.expendienteMedico.repository;
 
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.levm.expendienteMedico.entity.Paciente;
 
-@Repository
-public class PacienteRepository {
+public interface PacienteRepository {
 	
-	@PersistenceContext
-	private EntityManager em;
+	List<Paciente> buscarPacientes();
 	
-	public List<Paciente> buscarPacientes() {
-		return em.createQuery("SELECT p FROM Paciente p",Paciente.class).getResultList();
-	}
+	Paciente buscarPaciente(int noExpediente);
 	
-	public Paciente buscarPaciente(int noExpediente) {
-		return em.find(Paciente.class, noExpediente);	
-	}
+	void eliminarPaciente(Paciente paciente);
 	
-	@Transactional
-	public void eliminarPaciente(Paciente paciente)
-	{
-		em.remove(em.merge(paciente));
-	}
+	void agregarPaciente(Paciente paciente);
 	
-	@Transactional
-	public void agregarPaciente(Paciente paciente)
-	{
-		em.persist(paciente);
-	}
+	void actualizarPaciente(Paciente paciente);
 	
-	@Transactional
-	public void actualizarPaciente(Paciente paciente)
-	{
-		em.merge(paciente);
-	}
+
 }
