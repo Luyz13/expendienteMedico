@@ -3,7 +3,6 @@ package com.levm.expendienteMedico.entity;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.*;
-import java.util.Date;
 import java.util.Objects;
 
 import javax.persistence.*;
@@ -31,15 +30,25 @@ public class Paciente {
 		this.noExpediente = noExpediente;
 	}
 
-	public Paciente(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+	public Paciente(String nombre,  String apellidoPat,String apellidoMat, String fechaNacimiento, char sexo) {
 		super();
+		this.nombre = nombre;
+		this.apellidoPat = apellidoPat;
+		this.apellidoMat = apellidoMat;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+	}
+	
+	public Paciente(int noExpediente, String nombre,String apellidoPat,  String apellidoMat, String fechaNacimiento,
+			char sexo) {
+		super();
+		this.noExpediente = noExpediente;
 		this.nombre = nombre;
 		this.apellidoMat = apellidoMat;
 		this.apellidoPat = apellidoPat;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
 	}
-	
 
 	public int getNoExpediente() {
 		return noExpediente;
@@ -90,7 +99,7 @@ public class Paciente {
 	}
 	
 	public String getNombreCompleto(){
-		StringBuilder sB = null;
+		StringBuilder sB = new StringBuilder();
 		sB.append(this.nombre)
 		.append(" ")
 		.append(this.apellidoPat)
