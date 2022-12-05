@@ -1,0 +1,20 @@
+version: "3.8"
+
+services:
+  appserver:
+    image: expedienteapp
+    ports:
+      - "8080:8080"
+    depends_on:
+      - dbserver
+  dbserver:
+    image: mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=secret
+      - MYSQL_DATABASE=expedienteDB
+    volumes:
+      - './mysql_data:/var/lib/mysql'
+     
+      
+      
+    
