@@ -1,6 +1,7 @@
 package com.levm.expendienteMedico.Controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.levm.expendienteMedico.Service.PacienteService;
+import com.levm.expendienteMedico.Service.impl.PacienteService;
 import com.levm.expendienteMedico.entity.Paciente;
 
 @RestController
@@ -28,7 +29,7 @@ public class PacienteController {
 	}
 	
 	@GetMapping("/{noExpediente}")
-	public Paciente buscarPaciente(@PathVariable int noExpediente) {
+	public Optional<Paciente> buscarPaciente(@PathVariable int noExpediente) {
 		return pacienteService.buscarPaciente(noExpediente);
 	}
 	@DeleteMapping("/noExpediente")

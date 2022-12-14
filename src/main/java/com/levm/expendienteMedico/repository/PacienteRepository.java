@@ -6,15 +6,15 @@ import com.levm.expendienteMedico.entity.Paciente;
 
 public interface PacienteRepository {
 	
-	List<Paciente> buscarPacientes();
+	List<Paciente> findAll();
 	
-	Paciente buscarPaciente(int noExpediente);
+	Paciente findById(int noExpediente);
 	
-	void eliminarPaciente(Paciente paciente);
+	void delete(Paciente paciente);
 	
-	void agregarPaciente(Paciente paciente);
+	void save(Paciente paciente);
 	
-	void actualizarPaciente(Paciente paciente);
+	void update(Paciente paciente);
 	
 
 }

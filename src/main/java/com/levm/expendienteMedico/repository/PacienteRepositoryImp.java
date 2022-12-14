@@ -16,28 +16,28 @@ public class PacienteRepositoryImp implements PacienteRepository {
 	@PersistenceContext
 	private EntityManager em;
 	
-	public List<Paciente> buscarPacientes() {
+	public List<Paciente> findAll() {
 		return em.createQuery("SELECT p FROM Paciente p",Paciente.class).getResultList();
 	}
 	
-	public Paciente buscarPaciente(int noExpediente) {
+	public Paciente findById(int noExpediente) {
 		return em.find(Paciente.class, noExpediente);	
 	}
 	
 	@Transactional
-	public void eliminarPaciente(Paciente paciente)
+	public void delete(Paciente paciente)
 	{
 		em.remove(em.merge(paciente));
 	}
 	
 	@Transactional
-	public void agregarPaciente(Paciente paciente)
+	public void save(Paciente paciente)
 	{
 		em.persist(paciente);
 	}
 	
 	@Transactional
-	public void actualizarPaciente(Paciente paciente)
+	public void update(Paciente paciente)
 	{
 		em.merge(paciente);
 	}
