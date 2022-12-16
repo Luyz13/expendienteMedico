@@ -20,10 +20,15 @@ import com.levm.expendienteMedico.entity.Paciente;
 @RequestMapping("/paciente")
 public class PacienteController {
 	
-	@Autowired 
-	PacienteService pacienteService;
 
-	@GetMapping
+	private PacienteService pacienteService;
+
+	@Autowired
+	public PacienteController(PacienteService pacienteService) {
+		this.pacienteService = pacienteService;
+	}
+
+	@GetMapping("/all")
 	public List<Paciente> buscarPacientes() {
 		return pacienteService.buscarPacientes();
 	}
@@ -32,7 +37,7 @@ public class PacienteController {
 	public Optional<Paciente> buscarPaciente(@PathVariable int noExpediente) {
 		return pacienteService.buscarPaciente(noExpediente);
 	}
-	@DeleteMapping("/noExpediente")
+	@DeleteMapping("/{noExpediente}")
 	public void eliminarPaciente(Paciente paciente) {
 		pacienteService.eliminarPaciente(paciente);
 	}
