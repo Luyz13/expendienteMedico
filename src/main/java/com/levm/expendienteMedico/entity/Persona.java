@@ -3,15 +3,18 @@ package com.levm.expendienteMedico.entity;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
-import java.util.Objects;
 
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+@Data
+@NoArgsConstructor
 @MappedSuperclass
 public class Persona {
 	@Id
@@ -23,9 +26,6 @@ public class Persona {
 	private String fechaNacimiento;
 	private char sexo;
 	
-	public Persona() {
-	}
-
 	public Persona(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
 		this.nombre = nombre;
 		this.apellidoMat = apellidoMat;
@@ -34,54 +34,6 @@ public class Persona {
 		this.sexo = sexo;
 	}
 	
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellidoMat() {
-		return apellidoMat;
-	}
-
-	public void setApellidoMat(String apellidoMat) {
-		this.apellidoMat = apellidoMat;
-	}
-
-	public String getApellidoPat() {
-		return apellidoPat;
-	}
-
-	public void setApellidoPat(String apellidoPat) {
-		this.apellidoPat = apellidoPat;
-	}
-
-	public String getFechaNacimiento() {
-		return fechaNacimiento;
-	}
-
-	public void setFechaNacimiento(String fechaNacimiento) {
-		this.fechaNacimiento = fechaNacimiento;
-	}
-
-	public char getSexo() {
-		return sexo;
-	}
-
-	public void setSexo(char sexo) {
-		this.sexo = sexo;
-	}
 	
 	public String getNombreCompleto(){
 		StringBuilder sB = new StringBuilder();
@@ -102,36 +54,4 @@ public class Persona {
 		Period periodo = Period.between(fechaNac, fechaAct);
 		return periodo.getYears();
 	}
-
-	@Override
-	public int hashCode() {
-		return Objects.hash(apellidoMat, apellidoPat, fechaNacimiento, nombre, sexo);
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Persona other = (Persona) obj;
-		return Objects.equals(apellidoMat, other.apellidoMat) && Objects.equals(apellidoPat, other.apellidoPat)
-				&& Objects.equals(fechaNacimiento, other.fechaNacimiento) && Objects.equals(nombre, other.nombre)
-				&& sexo == other.sexo;
-	}
-
-	@Override
-	public String toString() {
-		return "Persona [nombre=" + nombre + ", apellidoMat=" + apellidoMat + ", apellidoPat=" + apellidoPat
-				+ ", fechaNacimiento=" + fechaNacimiento + ", sexo=" + sexo + "]";
-	}
-	
-	
-	
-	
-	
-	
-
 }

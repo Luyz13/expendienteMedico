@@ -4,7 +4,11 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name="medicos")
 public class Medico extends Persona {
@@ -12,9 +16,6 @@ public class Medico extends Persona {
 	private String cedulaProfecional;
 	private String universidad;
 	
-	public Medico() {
-		super();
-	}
 
 	public Medico(String cedulaProfecional, String universidad) {
 		super();
@@ -27,23 +28,6 @@ public class Medico extends Persona {
 		this.cedulaProfecional = cedulaProfecional;
 		this.universidad = universidad;
 	}
-
-	public String getCedulaProfecional() {
-		return cedulaProfecional;
-	}
-
-	public void setCedulaProfecional(String cedulaProfecional) {
-		this.cedulaProfecional = cedulaProfecional;
-	}
-
-	public String getUniversidad() {
-		return universidad;
-	}
-
-	public void setUniversidad(String universidad) {
-		this.universidad = universidad;
-	}
-
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -64,11 +48,4 @@ public class Medico extends Persona {
 		return Objects.equals(cedulaProfecional, other.cedulaProfecional)
 				&& Objects.equals(universidad, other.universidad);
 	}
-	
-	
-	
-	
-	
-	
-
 }
