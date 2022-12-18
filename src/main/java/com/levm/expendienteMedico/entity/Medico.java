@@ -2,8 +2,8 @@ package com.levm.expendienteMedico.entity;
 
 import java.util.Objects;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name="medicos")

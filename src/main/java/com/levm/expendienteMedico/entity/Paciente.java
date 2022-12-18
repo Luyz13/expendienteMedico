@@ -1,6 +1,6 @@
 package com.levm.expendienteMedico.entity;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="pacientes")
