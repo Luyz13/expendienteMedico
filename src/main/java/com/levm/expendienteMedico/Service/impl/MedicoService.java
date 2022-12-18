@@ -34,13 +34,13 @@ public class MedicoService implements IMedicoService {
 	}
 
 	@Override
-	public Optional<Medico> getById(String cedulaProfecional) {
+	public Optional<Medico> getById(int medicoId) {
 		
 		log.info("Se ejecuta el proceso getById de MedicoService");
 
 		log.info("Se ejecuta el proceso findById de IMedicoRepository");
 
-		return medicoRepository.findById(cedulaProfecional);
+		return medicoRepository.findById(medicoId);
 	}
 
 	@Override
@@ -76,7 +76,7 @@ public class MedicoService implements IMedicoService {
 
 		log.info("Se valida la existencia del registro");
 		
-		if(medicoRepository.existsById(medico.getCedulaProfecional()))
+		if(medicoRepository.existsById(medico.getId()))
 		{
 			log.info("Inicia el proceso update del registro");
 			

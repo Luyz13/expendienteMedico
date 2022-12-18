@@ -25,6 +25,7 @@ public class Persona {
 	private String apellidoPat;
 	private String fechaNacimiento;
 	private char sexo;
+
 	
 	public Persona(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
 		this.nombre = nombre;
@@ -53,5 +54,10 @@ public class Persona {
 		LocalDate fechaAct = LocalDate.now();
 		Period periodo = Period.between(fechaNac, fechaAct);
 		return periodo.getYears();
+	}
+
+
+	public Persona(int id) {
+		this.id = id;
 	}
 }

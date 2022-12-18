@@ -16,6 +16,8 @@ public class Medico extends Persona {
 	private String cedulaProfecional;
 	private String universidad;
 	
+	
+	
 
 	public Medico(String cedulaProfecional, String universidad) {
 		super();
@@ -47,5 +49,9 @@ public class Medico extends Persona {
 		Medico other = (Medico) obj;
 		return Objects.equals(cedulaProfecional, other.cedulaProfecional)
 				&& Objects.equals(universidad, other.universidad);
+	}
+
+	public Medico(int id) {
+		super(id);
 	}
 }

@@ -59,10 +59,10 @@ public class RecetaController {
 		log.info("Termina el proceso create de RecetaController");
 	}
 	@PutMapping("/{idReceta}")
-	public void update( @RequestBody Receta receta) {
+	public void update(@PathVariable int idReceta, @RequestBody Receta receta) {
 		log.info("Inicia el proceso update de RecetaController");
 		
-		recetaService.update(receta);
+		recetaService.update(idReceta,receta);
 		
 		log.info("Termina el proceso update de RecetaController");
 	}

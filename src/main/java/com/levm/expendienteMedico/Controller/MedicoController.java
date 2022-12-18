@@ -39,11 +39,11 @@ public class MedicoController {
 	}
 	
 	@GetMapping("/{cedulaProfecional}")
-	public Optional<Medico> getById(@PathVariable String cedulaProfecional) {
+	public Optional<Medico> getById(@PathVariable int medicoId) {
 		
 		log.info("Se ejecuta el proceso getById de MedicoController");		
 		
-		return medicoService.getById(cedulaProfecional);
+		return medicoService.getById(medicoId);
 	}
 	
 	@DeleteMapping("/{cedulaProfecional}")

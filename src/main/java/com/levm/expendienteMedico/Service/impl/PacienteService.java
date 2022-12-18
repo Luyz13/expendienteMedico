@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.levm.expendienteMedico.Service.IPacienteService;
+import com.levm.expendienteMedico.entity.ExpedienteMedico;
 import com.levm.expendienteMedico.entity.Paciente;
+import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
 import com.levm.expendienteMedico.repository.IPacienteRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -19,11 +21,13 @@ public class PacienteService implements IPacienteService{
 
 	
 	private IPacienteRepository pacienteRepository;
+	private IExpedienteMedicoRepository expedienteRepository;
 	
 	@Autowired
-	public PacienteService(IPacienteRepository pacienteRepository )
+	public PacienteService(IPacienteRepository pacienteRepository,IExpedienteMedicoRepository expedienteRepository)
 	{
 		this.pacienteRepository = pacienteRepository;
+		this.expedienteRepository = expedienteRepository;
 	}
 
 	public List<Paciente> buscarPacientes() {
@@ -82,5 +86,16 @@ public class PacienteService implements IPacienteService{
 			log.info("Termina el proceso update del registro");
 		}
 		log.info("Termina el proceso update de PacienteService");
+	}
+
+	@Override
+	public void agregarExpediente(int idPaciente, ExpedienteMedico expediente) {
+		if(pacienteRepository.existsById(idPaciente)) {
+			Paciente paciente=pacienteRepository.findById(idPaciente).orElse(null);
+			expediente=expedienteRepository.findById(1l).orElse(null);
+			paciente.setExpediente(expediente);
+			pacienteRepository.save((Paciente)paciente);
+		}
+		
 	}
 }

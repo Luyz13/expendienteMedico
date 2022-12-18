@@ -9,7 +9,7 @@ public interface IMedicoService {
 
 	List<Medico> getAll();
 	
-	Optional<Medico> getById(String cedulaProfecional);
+	Optional<Medico> getById(int medicoId);
 	
 	void delete(Medico medico);
 	

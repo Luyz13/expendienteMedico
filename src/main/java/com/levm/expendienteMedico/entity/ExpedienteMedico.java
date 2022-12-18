@@ -17,10 +17,16 @@ public class ExpedienteMedico {
 	
 	private String fechaAlta;
 	private String fechaActualizacion;
+	
+	
 
 	public ExpedienteMedico(String fechaAlta, String fechaActualizacion) {
 		super();
 		this.fechaAlta = fechaAlta;
 		this.fechaActualizacion = fechaActualizacion;
+	}
+
+	public ExpedienteMedico(long idExpediente) {
+		this.idExpediente = idExpediente;
 	}
 }

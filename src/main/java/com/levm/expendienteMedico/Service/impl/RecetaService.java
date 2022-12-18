@@ -68,18 +68,21 @@ public class RecetaService implements IRecetaService {
 	}
 
 	@Override
-	public void update(Receta receta) {
+	public void update(int idReceta,Receta receta) {
 		log.info("Inicia el proceso update de RecetaService");
 
 		log.info("Se valida la existencia del registro");
 		
-		if(recetaRepository.existsById(receta.getIdReceta())) {
+		if(recetaRepository.existsById(idReceta)) {
 			
 			log.info("Inicia el proceso update del registro");
-			
+			receta.setIdReceta(idReceta);
 			recetaRepository.save(receta);
 			
 			log.info("Termina el proceso update del registro");
+		}
+		else {
+			log.info("NO existe el registro");
 		}
 		log.info("Termina el proceso update de RecetaService");
 	}

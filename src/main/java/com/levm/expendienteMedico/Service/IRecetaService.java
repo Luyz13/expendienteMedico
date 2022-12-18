@@ -14,5 +14,5 @@ public interface IRecetaService {
 	
 	void create(Receta receta);
 	
-	void update(Receta receta);
+	void update(int idReceta,Receta receta);
 }
