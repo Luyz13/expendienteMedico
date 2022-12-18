@@ -2,6 +2,7 @@ package com.levm.expendienteMedico.entity;
 
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 public class Medico extends Persona {
 	
 	@Id
+	@Column(length = 50)
 	private String cedulaProfecional;
 	private String universidad;
 	

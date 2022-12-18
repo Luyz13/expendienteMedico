@@ -3,6 +3,9 @@ package com.levm.expendienteMedico.Controller;
 import java.util.List;
 import java.util.Optional;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,33 +22,53 @@ import com.levm.expendienteMedico.entity.IndicacionGeneral;
 @RequestMapping("/indicacion")
 public class IndicacionController {
 	
+	private static Logger logger = LoggerFactory.getLogger(IndicacionController.class);
+	
 	private IIndicacionService indicacionService;
 
+	@Autowired
 	public IndicacionController(IIndicacionService indicacionService) {
 		this.indicacionService = indicacionService;
 	}
 	
 	@GetMapping("/all")
 	public List<IndicacionGeneral> getAll() {
+		logger.info("Se ejecuta el proceso getAll de IndicacionController");
+		
 		return indicacionService.getAll();
 	}
 
 	@GetMapping("/{idIndicacion}")
 	public Optional<IndicacionGeneral> getById(@PathVariable int idIndicacion) {
+		logger.info("Se ejecuta el proceso getById de IndicacionController");
+		
 		return indicacionService.getById(idIndicacion);
 	}
 	
 	@DeleteMapping("/{idIndicacion}")
 	public void delete(IndicacionGeneral indicacion) {
+		logger.info("Inicia el proceso delete de IndicacionController");
+		
 		indicacionService.delete(indicacion);
+		
+		logger.info("Termina el proceso delete de IndicacionController");
 	}
 	
 	@PostMapping
 	public void create(@RequestBody IndicacionGeneral indicacion) {
+		
+		logger.info("Inicia el proceso create de IndicacionController");
+		
 		indicacionService.create(indicacion);
+		
+		logger.info("Termina el proceso create de IndicacionController");
 	}
 	@PutMapping("/{idIndicacion}")
 	public void update(@RequestBody IndicacionGeneral indicacion) {
+		logger.info("Inicia el proceso update de IndicacionController");
+		
 		indicacionService.update(indicacion);
+		
+		logger.info("Termina el proceso update de IndicacionController");
 	}
 }
