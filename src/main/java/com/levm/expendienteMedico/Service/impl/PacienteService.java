@@ -71,7 +71,7 @@ public class PacienteService implements IPacienteService{
 
 		logger.info("Se valida la existencia del registro");
 		
-		if(pacienteRepository.existsById(paciente.getIdPaciente()))
+		if(pacienteRepository.existsById(paciente.getId()))
 		{
 			logger.info("Inicia el proceso update del registro");
 			

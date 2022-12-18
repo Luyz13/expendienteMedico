@@ -12,6 +12,9 @@ import com.levm.expendienteMedico.Service.IExpedienteService;
 import com.levm.expendienteMedico.entity.ExpedienteMedico;
 import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @Service
 public class ExpedienteService implements IExpedienteService {
 	

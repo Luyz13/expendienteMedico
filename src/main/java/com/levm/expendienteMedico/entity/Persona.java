@@ -5,8 +5,21 @@ import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.Objects;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+@Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public class Persona {
-	
+	@Id
+	@GeneratedValue(strategy= GenerationType.SEQUENCE)
+	private int id;
 	private String nombre;
 	private String apellidoMat;
 	private String apellidoPat;
@@ -14,16 +27,23 @@ public class Persona {
 	private char sexo;
 	
 	public Persona() {
-		super();
 	}
 
 	public Persona(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
-		super();
 		this.nombre = nombre;
 		this.apellidoMat = apellidoMat;
 		this.apellidoPat = apellidoPat;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
+	}
+	
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
@@ -76,7 +96,8 @@ public class Persona {
 		
 		return sB.toString();
 	}
-	
+
+    @JsonIgnore
 	public int getEdad() {
 		DateTimeFormatter formato = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 		LocalDate fechaNac = LocalDate.parse(this.fechaNacimiento, formato);
