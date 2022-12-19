@@ -1,5 +1,7 @@
 package com.levm.expendienteMedico.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,11 +25,15 @@ public class IndicacionGeneral {
 	@JoinColumn(name = "no_receta")
 	Receta receta;
 	
-	
-
 	public IndicacionGeneral(int idIndicacion, String comentario) {
 		super();
 		this.idIndicacion = idIndicacion;
+		this.comentario = comentario;
+	}
+
+
+
+	public IndicacionGeneral(String comentario) {
 		this.comentario = comentario;
 	}
 }

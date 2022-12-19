@@ -30,7 +30,7 @@ public class IndicacionController {
 		this.indicacionService = indicacionService;
 	}
 	
-	@GetMapping("/")
+	@GetMapping
 	public List<IndicacionGeneral> getAll() {
 		log.info("Se ejecuta el proceso getAll de IndicacionController");
 		

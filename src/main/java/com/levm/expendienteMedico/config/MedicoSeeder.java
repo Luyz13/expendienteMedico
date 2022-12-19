@@ -35,5 +35,19 @@ public class MedicoSeeder implements CommandLineRunner {
 			medicoRepository.save(medico1);
 			
 		}
+		medico = medicoRepository.findById(2);
+		
+		if(medico.isEmpty())
+		{
+			Medico medico1 = new Medico("9084573",
+					"UNAM",
+					"Ramirez",
+					"Estrada",
+					"Wendolyn",
+					"18/01/1984",
+					'F');
+			medicoRepository.save(medico1);
+			
+		}
 	}
 }
