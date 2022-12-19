@@ -63,10 +63,10 @@ public class MedicamentoController {
 		log.info("Termina el proceso create de MedicamentoController");
 	}
 	@PutMapping("/{idMedicamento}")
-	public void update(@RequestBody Medicamento medicamento) {
+	public void update(@PathVariable Long idMedicamento,@RequestBody Medicamento medicamento) {
 		log.info("Inicia el proceso update de MedicamentoController");
 		
-		medicamentoService.update(medicamento);
+		medicamentoService.update(idMedicamento,medicamento);
 		
 		log.info("Termina el proceso update de MedicamentoController");
 	}

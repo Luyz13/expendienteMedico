@@ -15,6 +15,6 @@ public interface IIndicacionService {
 	
 	void create(IndicacionGeneral indicacion);
 	
-	void update(IndicacionGeneral indicacion);
+	void update(int idIndicacion, IndicacionGeneral indicacion);
 
 }

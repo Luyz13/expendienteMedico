@@ -16,7 +16,7 @@ public interface IPacienteService {
 
 	void agregarPaciente(Paciente paciente);
 
-	void actualizarPaciente(Paciente paciente);
+	void actualizarPaciente(int idPaciente,Paciente paciente);
 	
 	void agregarExpediente(int idPaciente,ExpedienteMedico expediente);
 

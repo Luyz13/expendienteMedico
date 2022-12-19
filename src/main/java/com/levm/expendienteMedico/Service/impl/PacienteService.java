@@ -72,15 +72,15 @@ public class PacienteService implements IPacienteService{
 		log.info("Termina el proceso create de PacienteService");
 	}
 
-	public void actualizarPaciente(Paciente paciente) {
+	public void actualizarPaciente(int idPaciente,Paciente paciente) {
 		log.info("Inicia el proceso update de PacienteService");
 
 		log.info("Se valida la existencia del registro");
 		
-		if(pacienteRepository.existsById(paciente.getId()))
+		if(pacienteRepository.existsById(idPaciente))
 		{
 			log.info("Inicia el proceso update del registro");
-			
+			paciente.setId(idPaciente);
 			pacienteRepository.save(paciente);
 			
 			log.info("Termina el proceso update del registro");

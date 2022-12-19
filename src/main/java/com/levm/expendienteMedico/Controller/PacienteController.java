@@ -36,7 +36,7 @@ public class PacienteController {
 		this.pacienteService = pacienteService;
 	}
 
-	@GetMapping("/all")
+	@GetMapping
 	public List<Paciente> buscarPacientes() {
 		log.info("Se ejecuta el proceso getById de PacienteController");
 		
@@ -69,14 +69,14 @@ public class PacienteController {
 	}
 
 	@PutMapping("/{idPaciente}")
-	public void actualizarPaciente(@RequestBody Paciente paciente) {
+	public void actualizarPaciente(@PathVariable int idPaciente,@RequestBody Paciente paciente) {
 		log.info("Inicia el proceso update de PacienteController");
 		
-		pacienteService.actualizarPaciente(paciente);
+		pacienteService.actualizarPaciente(idPaciente,paciente);
 		
 		log.info("Termina el proceso update de PacienteController");
 	}
-	@PatchMapping("/{idPaciente}")
+	@PatchMapping("/{idPaciente}/addExpediente")
 	public void agregarExpediente(@PathVariable int idPaciente,@RequestBody ExpedienteMedico expediente)
 	{
 		log.info("Inicia el proceso agregarExpediente");

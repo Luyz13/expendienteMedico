@@ -15,6 +15,6 @@ public interface IMedicamentoService {
 	
 	void create(Medicamento medicamento);
 	
-	void update(Medicamento medicamento);
+	void update(Long idMedicamento,Medicamento medicamento);
 
 }

@@ -72,14 +72,14 @@ public class MedicamentoService implements IMedicamentoService {
 	}
 
 	@Override
-	public void update(Medicamento medicamento) {
+	public void update(Long idMedicamento,Medicamento medicamento) {
 		log.info("Inicia el proceso update de MedicamentoService");
 
 		log.info("Se valida la existencia del registro");
 
-		if(medicamentoRepository.existsById(medicamento.getIdMedicamento())) {
+		if(medicamentoRepository.existsById(idMedicamento)) {
 			log.info("Inicia el proceso update del registro");
-			
+			medicamento.setIdMedicamento(idMedicamento);
 			medicamentoRepository.save(medicamento);
 
 			log.info("Termina el proceso update del registro");

@@ -30,7 +30,7 @@ public class ExpedienteController {
 	public ExpedienteController(IExpedienteService expedienteService) {
 		this.expedienteService = expedienteService;
 	}
-	@GetMapping("/all")
+	@GetMapping
 	public List<ExpedienteMedico> getAll() {
 		log.info("Se ejecuta el proceso getAll de ExpedienteController");
 		
@@ -58,11 +58,11 @@ public class ExpedienteController {
 		
 		log.info("Termina el proceso create de ExpedienteController");
 	}
-	@PutMapping
-	public void update(@RequestBody ExpedienteMedico expediente) {
+	@PutMapping("/{idExpediente}")
+	public void update(@PathVariable long idExpediente,@RequestBody ExpedienteMedico expediente) {
 		log.info("Inicia el proceso update de ExpedienteController");
 		
-		expedienteService.update(expediente);
+		expedienteService.update(idExpediente,expediente);
 		
 		log.info("Termina el proceso update de ExpedienteController");
 	}

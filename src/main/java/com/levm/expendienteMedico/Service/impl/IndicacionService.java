@@ -71,15 +71,15 @@ public class IndicacionService implements IIndicacionService{
 	}
 
 	@Override
-	public void update(IndicacionGeneral indicacion) {
+	public void update(int idIndicacion,IndicacionGeneral indicacion) {
 		log.info("Inicia el proceso update de ExpedienteService");
 
 		log.info("Se valida la existencia del registro");
 		
-		if(indicacionRepository.existsById(indicacion.getIdIndicacion()))
+		if(indicacionRepository.existsById(idIndicacion))
 		{
 			log.info("Inicia el proceso update del registro");
-			
+			indicacion.setIdIndicacion(idIndicacion);
 			indicacionRepository.save(indicacion);
 			
 			log.info("Termina el proceso update del registro");

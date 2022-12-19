@@ -29,7 +29,7 @@ public class MedicoController {
 		
 		this.medicoService = medicoService;
 	}
-	@GetMapping("/all")
+	@GetMapping
 	public List<Medico> getAll() {
 		
 		log.info("Se ejecuta el proceso getAll de MedicoController");
@@ -38,7 +38,7 @@ public class MedicoController {
 		return medicoService.getAll();
 	}
 	
-	@GetMapping("/{cedulaProfecional}")
+	@GetMapping("/{idMedico}")
 	public Optional<Medico> getById(@PathVariable int medicoId) {
 		
 		log.info("Se ejecuta el proceso getById de MedicoController");		
@@ -46,7 +46,7 @@ public class MedicoController {
 		return medicoService.getById(medicoId);
 	}
 	
-	@DeleteMapping("/{cedulaProfecional}")
+	@DeleteMapping("/{idMedico}")
 	public void delete(Medico medico) {
 		
 		log.info("Inicia el proceso delete de MedicoController");
@@ -65,11 +65,11 @@ public class MedicoController {
 		log.info("Termina el proceso create de MedicoController");
 		
 	}
-	@PutMapping("/{cedulaProfecional}")
-	public void update( @RequestBody Medico medico) {
+	@PutMapping("/{idMedico}")
+	public void update( @PathVariable int idMedico,@RequestBody Medico medico) {
 		log.info("Inicia el proceso update de MedicoController");
 		
-		medicoService.update(medico);
+		medicoService.update( idMedico,medico);
 
 		log.info("Termina el proceso update de MedicoController");
 		

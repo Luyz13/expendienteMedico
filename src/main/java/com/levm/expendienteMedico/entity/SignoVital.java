@@ -1,5 +1,7 @@
 package com.levm.expendienteMedico.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,20 +20,25 @@ public class SignoVital {
 	@Column(name = "id_signo")
 	private int idSigno;
 	
-	private Long temperatura;
-	private Long peso;
-	private Long talla;
+	private double temperatura;
+	private double peso;
+	private double talla;
 	
+	@JsonIgnore
 	@OneToOne(mappedBy = "signos")
 	private Receta receta;
 	
 	
 	
 
-	public SignoVital(Long temperatura, Long peso, Long talla) {
+	public SignoVital(double temperatura, double peso, double talla) {
 		super();
 		this.temperatura = temperatura;
 		this.peso = peso;
 		this.talla = talla;
+	}
+
+	public SignoVital(int idSigno) {
+		this.idSigno = idSigno;
 	}
 }

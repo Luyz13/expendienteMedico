@@ -15,5 +15,5 @@ public interface IMedicoService {
 	
 	void create(Medico medico);
 	
-	void update(Medico medico);
+	void update(int idMedico,Medico medico);
 }

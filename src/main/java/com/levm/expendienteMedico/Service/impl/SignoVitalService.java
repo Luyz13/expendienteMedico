@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.levm.expendienteMedico.Service.ISignoVitalService;
 import com.levm.expendienteMedico.entity.SignoVital;
-import com.levm.expendienteMedico.repository.ISignoVital;
+import com.levm.expendienteMedico.repository.ISignoVitalRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,10 +16,10 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class SignoVitalService implements ISignoVitalService{
 		
-	private ISignoVital signoRepository;
+	private ISignoVitalRepository signoRepository;
 	
 	@Autowired
-	public SignoVitalService(ISignoVital signoRepository) {
+	public SignoVitalService(ISignoVitalRepository signoRepository) {
 		this.signoRepository = signoRepository;
 	}
 
@@ -70,14 +70,15 @@ public class SignoVitalService implements ISignoVitalService{
 	}
 
 	@Override
-	public void update(SignoVital signo) {
+	public void update(int idSigno,SignoVital signo) {
 		log.info("Inicia el proceso update de SignoVitalService");
 
 		log.info("Se valida la existencia del registro");
 		
-		if(signoRepository.existsById(signo.getIdSigno())) {
+		if(signoRepository.existsById(idSigno)) {
 			log.info("Inicia el proceso update del registro");
 			
+			signo.setIdSigno(idSigno);
 			signoRepository.save(signo);
 			
 			log.info("Termina el proceso update del registro");

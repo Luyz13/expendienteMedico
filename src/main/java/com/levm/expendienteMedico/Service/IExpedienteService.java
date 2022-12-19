@@ -15,6 +15,6 @@ public interface IExpedienteService {
 	
 	void create(ExpedienteMedico expediente);
 	
-	void update(ExpedienteMedico expediente);
+	void update( long idExpediente,ExpedienteMedico expediente);
 
 }

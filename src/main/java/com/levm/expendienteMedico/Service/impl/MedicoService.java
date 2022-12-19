@@ -71,15 +71,15 @@ public class MedicoService implements IMedicoService {
 	}
 
 	@Override
-	public void update(Medico medico) {
+	public void update(int idMedico,Medico medico) {
 		log.info("Inicia el proceso update de MedicoService");
 
 		log.info("Se valida la existencia del registro");
 		
-		if(medicoRepository.existsById(medico.getId()))
+		if(medicoRepository.existsById(idMedico))
 		{
 			log.info("Inicia el proceso update del registro");
-			
+			medico.setId(idMedico);
 			medicoRepository.save(medico);
 			
 			log.info("Termina el proceso update del registro");

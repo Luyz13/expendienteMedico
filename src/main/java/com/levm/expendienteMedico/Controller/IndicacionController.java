@@ -30,7 +30,7 @@ public class IndicacionController {
 		this.indicacionService = indicacionService;
 	}
 	
-	@GetMapping("/all")
+	@GetMapping("/")
 	public List<IndicacionGeneral> getAll() {
 		log.info("Se ejecuta el proceso getAll de IndicacionController");
 		
@@ -63,10 +63,10 @@ public class IndicacionController {
 		log.info("Termina el proceso create de IndicacionController");
 	}
 	@PutMapping("/{idIndicacion}")
-	public void update(@RequestBody IndicacionGeneral indicacion) {
+	public void update(@PathVariable int idIndicacion,@RequestBody IndicacionGeneral indicacion) {
 		log.info("Inicia el proceso update de IndicacionController");
 		
-		indicacionService.update(indicacion);
+		indicacionService.update(idIndicacion,indicacion);
 		
 		log.info("Termina el proceso update de IndicacionController");
 	}

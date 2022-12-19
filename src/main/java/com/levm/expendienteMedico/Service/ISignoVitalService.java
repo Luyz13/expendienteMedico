@@ -14,5 +14,5 @@ public interface ISignoVitalService {
 	
 	void create(SignoVital signo);
 	
-	void update(SignoVital signo);
+	void update(int idSigno,SignoVital signo);
 }

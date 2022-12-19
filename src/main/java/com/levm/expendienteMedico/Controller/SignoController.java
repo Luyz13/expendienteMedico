@@ -30,7 +30,7 @@ public class SignoController {
 		
 		this.signoService = signoService;
 	}
-	@GetMapping("/all")
+	@GetMapping
 	public List<SignoVital> getAll() {
 		log.info("Se ejecuta el proceso getAll de SignoController");
 		
@@ -61,10 +61,10 @@ public class SignoController {
 		log.info("Termina el proceso create de SignoController");
 	}
 	@PutMapping("/{idSgino}")
-	public void update(@RequestBody SignoVital signo) {
+	public void update(@PathVariable int idSigno,@RequestBody SignoVital signo) {
 		log.info("Inicia el proceso update de SignoController");
 		
-		signoService.update(signo);
+		signoService.update(idSigno,signo);
 		
 		log.info("Termina el proceso update de SignoController");
 	}

@@ -66,14 +66,15 @@ public class ExpedienteService implements IExpedienteService {
 		log.info("Termina el proceso create de ExpedienteService");
 		
 	}
-	public void update(ExpedienteMedico expediente) {
+	public void update( long idExpediente,ExpedienteMedico expediente) {
 		log.info("Inicia el proceso update de ExpedienteService");
 		
 		log.info("Se valida la existencia del registro");
 		
-		if(expedienteRepository.existsById(expediente.getIdExpediente()))
+		if(expedienteRepository.existsById(idExpediente))
 		{
 			log.info("Inicia el proceso update del registro");
+			expediente.setIdExpediente(idExpediente);
 			expedienteRepository.save(expediente);
 			log.info("Termina el proceso update del registro");
 		}
