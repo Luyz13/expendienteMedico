@@ -4,10 +4,12 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
-import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
 @NoArgsConstructor
 @Entity
 @Table(name="medicos")
@@ -16,9 +18,6 @@ public class Medico extends Persona {
 	private String cedulaProfecional;
 	private String universidad;
 	
-	
-	
-
 	public Medico(String cedulaProfecional, String universidad) {
 		super();
 		this.cedulaProfecional = cedulaProfecional;
