@@ -4,6 +4,9 @@ import java.util.Objects;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +18,14 @@ import lombok.Setter;
 @Table(name="medicos")
 public class Medico extends Persona {
 	
+	@NotEmpty(message = "La cedula profesional debe estar informada")
+	@Size(min = 7, max= 10, message = "La denominación debe tener entre 7 y 10 caracteres")
+	@NotBlank(message ="La denominación no debe estar conformada por espacios")
 	private String cedulaProfecional;
+	
+	@NotEmpty(message = "La cedula profesional debe estar informada")
+	@Size(min = 4, max= 30, message = "La denominación debe tener entre 4 y 30 caracteres")
+	@NotBlank(message ="La denominación no debe estar conformada por espacios")
 	private String universidad;
 	
 	public Medico(String cedulaProfecional, String universidad) {

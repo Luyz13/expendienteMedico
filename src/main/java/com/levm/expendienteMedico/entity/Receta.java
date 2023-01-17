@@ -8,6 +8,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,8 +28,13 @@ public class Receta {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int idReceta;
 	
+	@NotEmpty(message = "El padecimiento debe estar informado")
+	@Size(min = 4, max= 30, message = "El padecimiento debe tener entre 4 y 30 caracteres")
+	@NotBlank(message ="El padecimiento no debe estar conformada por espacios")
 	private String padecimiento;
 	
+	@NotEmpty(message = "La alergias deben estar informado")
+	@NotBlank(message ="Las alergias no debe estar conformada por espacios")
 	private boolean alergias;
 	
 
