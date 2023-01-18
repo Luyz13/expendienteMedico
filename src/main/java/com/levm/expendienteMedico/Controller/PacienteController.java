@@ -62,7 +62,7 @@ public class PacienteController {
 	
 	
 	@PostMapping
-	public ResponseEntity<?> agregarPaciente(@Valid @RequestBody Paciente paciente) {
+	public ResponseEntity<?> agregarPaciente(@RequestBody Paciente paciente) {
 		log.info("Se ejecuta el proceso create de PacienteController");
 		
 		pacienteService.agregarPaciente(paciente);

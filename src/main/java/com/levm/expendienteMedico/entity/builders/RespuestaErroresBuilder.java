@@ -1,4 +1,4 @@
-package com.levm.expendienteMedico.entity.build;
+package com.levm.expendienteMedico.entity.builders;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,29 +9,18 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 
-import com.levm.expendienteMedico.entity.RespuestaError;
+import com.levm.expendienteMedico.entity.RespuestaErrores;
 
-public class RespuestaErrorBuilder {
-	private int estatus;
+public class RespuestaErroresBuilder extends RespuestaBaseBuilder{
+
     private Map<String, String> errores;
-    private String ruta;
-     
-    public RespuestaErrorBuilder estatus(int estatus) {
-        this.estatus = estatus;
-        return this;
-    }
-
-    public RespuestaErrorBuilder status(HttpStatus estatus) {
-        this.estatus = estatus.value();
-        return this;
-    }
-
-    public RespuestaErrorBuilder errores(Map<String, String> errores) {
+    
+    public RespuestaErroresBuilder errores(Map<String, String> errores) {
         this.errores = errores;
         return this;
     }
 
-    public RespuestaErrorBuilder exception(MethodArgumentNotValidException exception) {
+    public RespuestaErroresBuilder exception(MethodArgumentNotValidException exception) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         this.estatus = status.value();
 
@@ -45,22 +34,17 @@ public class RespuestaErrorBuilder {
 
         return this;
     }
-
-    public RespuestaErrorBuilder ruta(String ruta) {
-        this.ruta = ruta;
-        return this;
-    }
-
-    public RespuestaError build() {
-        RespuestaError respuesta = new RespuestaError();
+    public RespuestaErrores build() {
+        RespuestaErrores respuesta = new RespuestaErrores();
         respuesta.setEstatus(estatus);
         respuesta.setErrores(errores);
         respuesta.setRuta(ruta);
         return respuesta;
     }
-
-    public ResponseEntity<RespuestaError> entidad() {
+    @Override
+    public ResponseEntity<RespuestaErrores> entidad() {
         return ResponseEntity.status(estatus).headers(HttpHeaders.EMPTY).body(build());
     }
+   
     
 }
