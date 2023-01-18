@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.IRecetaService;
 import com.levm.expendienteMedico.entity.Receta;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -51,7 +52,7 @@ public class RecetaController {
 		log.info("Termina el proceso delete de RecetaController");
 	}
 	@PostMapping
-	public void create(@RequestBody Receta receta) {
+	public void create(@Valid @RequestBody Receta receta) {
 		log.info("Inicia el proceso create de RecetaController");
 		
 		recetaService.create(receta);
@@ -59,7 +60,7 @@ public class RecetaController {
 		log.info("Termina el proceso create de RecetaController");
 	}
 	@PutMapping("/{idReceta}")
-	public void update(@PathVariable int idReceta, @RequestBody Receta receta) {
+	public void update(@PathVariable int idReceta,@Valid @RequestBody Receta receta) {
 		log.info("Inicia el proceso update de RecetaController");
 		
 		recetaService.update(idReceta,receta);

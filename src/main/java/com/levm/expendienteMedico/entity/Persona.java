@@ -10,6 +10,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -43,8 +44,7 @@ public class Persona {
 	@Pattern(regexp = "^[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}$")
 	private String fechaNacimiento;
 	
-	@NotEmpty(message = "El sexo debe estar informado")
-	@NotBlank(message ="El sexo no debe estar conformada por espacios")
+	@NotNull(message = "El sexo debe estar informado")
 	private char sexo;
 
 	

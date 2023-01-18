@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.ISignoVitalService;
 import com.levm.expendienteMedico.entity.SignoVital;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -53,7 +54,7 @@ public class SignoController {
 		log.info("Termina el proceso delete de SignoController");
 	}
 	@PostMapping
-	public void create(@RequestBody SignoVital signo) {
+	public void create(@Valid @RequestBody SignoVital signo) {
 		log.info("Inicia el proceso create de SignoController");
 		
 		signoService.create(signo);
@@ -61,7 +62,7 @@ public class SignoController {
 		log.info("Termina el proceso create de SignoController");
 	}
 	@PutMapping("/{idSgino}")
-	public void update(@PathVariable int idSigno,@RequestBody SignoVital signo) {
+	public void update(@PathVariable int idSigno,@Valid @RequestBody SignoVital signo) {
 		log.info("Inicia el proceso update de SignoController");
 		
 		signoService.update(idSigno,signo);

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.IMedicoService;
 import com.levm.expendienteMedico.entity.Medico;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
@@ -57,7 +58,7 @@ public class MedicoController {
 	}
 
 	@PostMapping
-	public void create(@RequestBody Medico medico) {
+	public void create(@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso create de MedicoController");
 		
 		medicoService.create(medico);
@@ -66,7 +67,7 @@ public class MedicoController {
 		
 	}
 	@PutMapping("/{idMedico}")
-	public void update( @PathVariable int idMedico,@RequestBody Medico medico) {
+	public void update( @PathVariable int idMedico,@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso update de MedicoController");
 		
 		medicoService.update( idMedico,medico);
