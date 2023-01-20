@@ -2,7 +2,6 @@ package com.levm.expendienteMedico.Controller;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -46,11 +45,11 @@ public class PacienteController {
 		return pacienteService.buscarPacientes();
 	}
 	
-	@GetMapping("/{idPaciente}")
-	public Optional<Paciente> buscarPaciente(@PathVariable int idPaciente) {
+	@GetMapping(value="/{idPaciente}")
+	public ResponseEntity<?> buscarPaciente(@PathVariable int idPaciente) {
 		log.info("Se ejecuta el proceso getById de PacienteController");
 		
-		return pacienteService.buscarPaciente(idPaciente);
+		return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
 	}
 	@DeleteMapping("/{noExpediente}")
 	public void eliminarPaciente(Paciente paciente) {
@@ -63,7 +62,7 @@ public class PacienteController {
 	
 	
 	@PostMapping
-	public ResponseEntity<?> agregarPaciente(@RequestBody Paciente paciente) {
+	public ResponseEntity<?> agregarPaciente(@Valid @RequestBody Paciente paciente) {
 		log.info("Se ejecuta el proceso create de PacienteController");
 		
 		pacienteService.agregarPaciente(paciente);
