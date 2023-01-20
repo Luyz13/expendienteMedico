@@ -10,10 +10,8 @@ import org.springframework.web.context.request.WebRequest;
 import com.levm.expendienteMedico.entity.RespuestaError;
 import com.levm.expendienteMedico.entity.RespuestaErrores;
 
-
-
 @RestControllerAdvice
-public class ManejadorGlobalExcepciones {
+public class ManejadorGlobalExcepciones{
 
 	@ExceptionHandler(Exception.class)
 	public ResponseEntity<?> manejaException(Exception ex, WebRequest request) {
@@ -34,5 +32,4 @@ public class ManejadorGlobalExcepciones {
 				ruta(request.getDescription(false).substring(4))
 				.entidad();
 	}
-
 }

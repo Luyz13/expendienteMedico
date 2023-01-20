@@ -1,5 +1,6 @@
 package com.levm.expendienteMedico.Controller;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
@@ -67,7 +68,8 @@ public class PacienteController {
 		
 		pacienteService.agregarPaciente(paciente);
 		
-		return ResponseEntity.ok("");
+		return ResponseEntity
+				.created(URI.create("")).build();
 	}
 
 	@PutMapping("/{idPaciente}")
