@@ -32,14 +32,14 @@ public class MedicamentoController {
 		this.medicamentoService = medicamentoService;
 	}
 	
-	@GetMapping("/all")
+	@GetMapping
 	public List<Medicamento> getAll() {
 		log.info("Se ejecuta el proceso getAll de MedicamentoController");
 		
 		return medicamentoService.getAll();
 	}
 	
-	@GetMapping
+	@GetMapping(value="/{idMedicamento}")
 	public Optional<Medicamento> getById( @PathVariable Long idMedicamento) {
 		log.info("Se ejecuta el proceso getById de MedicamentoController");
 		
