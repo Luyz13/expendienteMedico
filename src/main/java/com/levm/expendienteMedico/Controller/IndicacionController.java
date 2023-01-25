@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.IIndicacionService;
 import com.levm.expendienteMedico.entity.IndicacionGeneral;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -54,7 +55,7 @@ public class IndicacionController {
 	}
 	
 	@PostMapping
-	public void create(@RequestBody IndicacionGeneral indicacion) {
+	public void create(@Valid @RequestBody IndicacionGeneral indicacion) {
 		
 		log.info("Inicia el proceso create de IndicacionController");
 		
@@ -63,7 +64,7 @@ public class IndicacionController {
 		log.info("Termina el proceso create de IndicacionController");
 	}
 	@PutMapping("/{idIndicacion}")
-	public void update(@PathVariable int idIndicacion,@RequestBody IndicacionGeneral indicacion) {
+	public void update(@PathVariable int idIndicacion,@Valid @RequestBody IndicacionGeneral indicacion) {
 		log.info("Inicia el proceso update de IndicacionController");
 		
 		indicacionService.update(idIndicacion,indicacion);

@@ -8,22 +8,43 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.MappedSuperclass;
-import lombok.Data;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
 public class Persona {
 	@Id
 	@GeneratedValue(strategy= GenerationType.SEQUENCE)
 	private int id;
+	
+	@NotEmpty(message = "El sexo debe estar informado")
+	@NotBlank(message ="El sexo no debe estar conformada por espacios")
 	private String nombre;
+	
+	@NotEmpty(message = "El sexo debe estar informado")
+	@NotBlank(message ="El sexo no debe estar conformada por espacios")
 	private String apellidoMat;
+	
+	@NotEmpty(message = "El sexo debe estar informado")
+	@NotBlank(message ="El sexo no debe estar conformada por espacios")
 	private String apellidoPat;
+	
+	@Pattern(regexp = "^[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}$")
 	private String fechaNacimiento;
+	
+	@NotNull(message = "El sexo debe estar informado")
 	private char sexo;
 
 	

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.IMedicamentoService;
 import com.levm.expendienteMedico.entity.Medicamento;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -31,14 +32,14 @@ public class MedicamentoController {
 		this.medicamentoService = medicamentoService;
 	}
 	
-	@GetMapping("/all")
+	@GetMapping
 	public List<Medicamento> getAll() {
 		log.info("Se ejecuta el proceso getAll de MedicamentoController");
 		
 		return medicamentoService.getAll();
 	}
 	
-	@GetMapping
+	@GetMapping(value="/{idMedicamento}")
 	public Optional<Medicamento> getById( @PathVariable Long idMedicamento) {
 		log.info("Se ejecuta el proceso getById de MedicamentoController");
 		
@@ -55,7 +56,7 @@ public class MedicamentoController {
 	}
 
 	@PostMapping
-	public void create(@RequestBody Medicamento medicamento) {
+	public void create(@Valid @RequestBody Medicamento medicamento) {
 		log.info("Inicia el proceso create de MedicamentoController");
 		
 		medicamentoService.create(medicamento);
@@ -63,7 +64,7 @@ public class MedicamentoController {
 		log.info("Termina el proceso create de MedicamentoController");
 	}
 	@PutMapping("/{idMedicamento}")
-	public void update(@PathVariable Long idMedicamento,@RequestBody Medicamento medicamento) {
+	public void update(@PathVariable Long idMedicamento, @Valid @RequestBody Medicamento medicamento) {
 		log.info("Inicia el proceso update de MedicamentoController");
 		
 		medicamentoService.update(idMedicamento,medicamento);

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levm.expendienteMedico.Service.IMedicoService;
 import com.levm.expendienteMedico.entity.Medico;
 
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RestController
@@ -38,7 +39,7 @@ public class MedicoController {
 		return medicoService.getAll();
 	}
 	
-	@GetMapping("/{idMedico}")
+	@GetMapping(value="/{medicoId}")
 	public Optional<Medico> getById(@PathVariable int medicoId) {
 		
 		log.info("Se ejecuta el proceso getById de MedicoController");		
@@ -46,7 +47,7 @@ public class MedicoController {
 		return medicoService.getById(medicoId);
 	}
 	
-	@DeleteMapping("/{idMedico}")
+	@DeleteMapping("/{medicoId}")
 	public void delete(Medico medico) {
 		
 		log.info("Inicia el proceso delete de MedicoController");
@@ -57,7 +58,7 @@ public class MedicoController {
 	}
 
 	@PostMapping
-	public void create(@RequestBody Medico medico) {
+	public void create(@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso create de MedicoController");
 		
 		medicoService.create(medico);
@@ -65,8 +66,8 @@ public class MedicoController {
 		log.info("Termina el proceso create de MedicoController");
 		
 	}
-	@PutMapping("/{idMedico}")
-	public void update( @PathVariable int idMedico,@RequestBody Medico medico) {
+	@PutMapping("/{medicoId}")
+	public void update( @PathVariable int idMedico,@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso update de MedicoController");
 		
 		medicoService.update( idMedico,medico);

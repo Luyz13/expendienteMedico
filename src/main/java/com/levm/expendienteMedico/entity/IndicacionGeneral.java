@@ -1,24 +1,35 @@
 package com.levm.expendienteMedico.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
-import lombok.Data;
+import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Data
+@Getter
+@Setter
+@AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name="indicaciones")
 public class IndicacionGeneral {
 	
 	@Id
 	@GeneratedValue
 	private int idIndicacion;
 	
+	@NotEmpty(message = "El comentario debe estar informado")
+	@Size(min = 4, max= 30, message = "El comentario debe tener entre 4 y 30 caracteres")
+	@NotBlank(message ="El comentario no deben ser puros espacios")
 	private String comentario;
 	
 	@ManyToOne
