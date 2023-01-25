@@ -18,12 +18,16 @@ public class Paciente extends Persona{
 	@JoinColumn(name="expedienteId", referencedColumnName ="idExpediente")
 	private ExpedienteMedico expediente;
 	
-	
+	public Paciente(int Id,String nombre,String apellidoPat, String apellidoMat,String fechaNacimiento, char sexo) {
+		super(Id,nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
 
-	public Paciente(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+	}
+	
+	public Paciente(String nombre, String apellidoPat, String apellidoMat, String fechaNacimiento, char sexo) {
 		super(nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
 
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)

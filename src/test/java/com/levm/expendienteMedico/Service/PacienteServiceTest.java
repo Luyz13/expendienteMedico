@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
@@ -12,23 +13,28 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.levm.expendienteMedico.Service.impl.PacienteService;
 import com.levm.expendienteMedico.entity.Paciente;
-import com.levm.expendienteMedico.repository.PacienteRepository;
+import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
+import com.levm.expendienteMedico.repository.IPacienteRepository;
 
 
 @SpringBootTest
 public class PacienteServiceTest {
 	
-	/*@Mock
-	private PacienteRepository pacienteRepository;
+	@Mock
+	private IPacienteRepository pacienteRepository;
+	
+	@Mock
+	private IExpedienteMedicoRepository expedienteRepository;
 	
 	@InjectMocks
-	private PacienteService pacienteService = new PacienteService();
+	private PacienteService pacienteService = new PacienteService(pacienteRepository,expedienteRepository);
 	
 	@Test
 	public void buscarPacientesTest()
 	{
-		Mockito.when(pacienteRepository.buscarPacientes())
+		Mockito.when(pacienteRepository.findAll())
 			.thenReturn(
 					Arrays.asList(
 							new Paciente(1,"Luis","Vargas","Martinez","21/11/1992",'M'),
@@ -41,11 +47,12 @@ public class PacienteServiceTest {
 	}
 	@Test
 	public void buscarPacienteTest() {
-		Mockito.when(pacienteRepository.buscarPaciente(1))
-			.thenReturn(
-					new Paciente(1,"Luis","Vargas","Martinez","21/11/1992",'M'));
+		Optional<Paciente> p1=Optional.of(new Paciente(1,"Luis","Vargas","Martinez","21/11/1992",'M'));
+		Mockito.when(pacienteRepository.findById(1)).thenReturn(p1);
+		
+					
 		
 		Paciente paciente = pacienteService.buscarPaciente(1);
 		assertEquals("Luis Vargas Martinez",paciente.getNombreCompleto());
-	}*/
+	}
 }

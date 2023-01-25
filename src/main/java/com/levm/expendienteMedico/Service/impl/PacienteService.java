@@ -1,7 +1,6 @@
 package com.levm.expendienteMedico.Service.impl;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -38,14 +37,13 @@ public class PacienteService implements IPacienteService{
 		
 		return pacienteRepository.findAll();
 	}
-
-	public Optional<Paciente> buscarPaciente(int idPaciente) {
+	public Paciente buscarPaciente(int idPaciente) {
 		
 		log.info("Se ejecuta el proceso getById de PacienteService");
 
 		log.info("Se ejecuta el proceso findById de IPacienteRepository");
 		
-		return pacienteRepository.findById(idPaciente);
+		return pacienteRepository.findById(idPaciente).orElse(null);
 	}
 
 	public void eliminarPaciente(Paciente paciente) {
