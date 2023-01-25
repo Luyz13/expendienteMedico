@@ -39,10 +39,10 @@ public class PacienteController {
 	}
 
 	@GetMapping
-	public List<Paciente> buscarPacientes() {
+	public ResponseEntity<List<?>> buscarPacientes() {
 		log.info("Se ejecuta el proceso getById de PacienteController");
 		
-		return pacienteService.buscarPacientes();
+		return ResponseEntity.ok(pacienteService.buscarPacientes());
 	}
 	
 	@GetMapping(value="/{idPaciente}")

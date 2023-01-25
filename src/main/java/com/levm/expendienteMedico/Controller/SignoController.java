@@ -21,7 +21,7 @@ import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/signoVital")
+@RequestMapping("/signo")
 public class SignoController {
 	
 	private ISignoVitalService signoService;
