@@ -46,6 +46,7 @@ public class Persona {
 	private char sexo;
 	
 	public Persona(int id, String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellidoMat = apellidoMat;
 		this.apellidoPat = apellidoPat;

@@ -1,5 +1,6 @@
 package com.levm.expendienteMedico.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 import com.levm.expendienteMedico.entity.ExpedienteMedico;
@@ -10,6 +11,8 @@ public interface IPacienteService {
 	List<Paciente> buscarPacientes();
 
 	Paciente buscarPaciente(int noExpediente);
+	
+	Collection<Paciente> findPacienteBySexo(char sexo);
 
 	void eliminarPaciente(Paciente paciente);
 

@@ -1,6 +1,8 @@
 package com.levm.expendienteMedico.Service.impl;
 
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -95,5 +97,16 @@ public class PacienteService implements IPacienteService{
 			pacienteRepository.save((Paciente)paciente);
 		}
 		
+	}
+
+	@Override
+	public Collection<Paciente> findPacienteBySexo(char sexo) {
+	
+		return  pacienteRepository.findAll()
+				.stream()
+				.filter(paciente -> (Character.compare(paciente.getSexo(), sexo)==0))
+				.collect(Collectors.toList());
+				
+				
 	}
 }
