@@ -92,7 +92,7 @@ public class PacienteService implements IPacienteService{
 	public void agregarExpediente(int idPaciente, ExpedienteMedico expediente) {
 		if(pacienteRepository.existsById(idPaciente)) {
 			Paciente paciente=pacienteRepository.findById(idPaciente).orElse(null);
-			expediente=expedienteRepository.findById(1l).orElse(null);
+			expediente=expedienteRepository.findById(expediente.getIdExpediente()).orElse(null);
 			paciente.setExpediente(expediente);
 			pacienteRepository.save((Paciente)paciente);
 		}
