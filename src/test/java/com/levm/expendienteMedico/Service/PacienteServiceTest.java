@@ -112,6 +112,14 @@ public class PacienteServiceTest {
 		inOrder.verify(pacienteRepository).save(p1);	
 	}
 	
+	@Test
+	@DisplayName("Test para eliminar un paciente")
+	public void eliminarPacienteTest() {
+		Paciente p1=new Paciente(4);
+		pacienteService.eliminarPaciente(p1);
+		verify(pacienteRepository).delete(p1);
+	}
+	
 	private List<Integer> getPersonasIds(Collection<Paciente> pacientes){
 		return pacientes.stream().map(paciente -> paciente.getId()).collect(Collectors.toList());
 	}

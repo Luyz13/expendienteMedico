@@ -27,7 +27,10 @@ public class Paciente extends Persona{
 		super(nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
 
 	}
-	
+	public Paciente(int id)
+	{
+		super(id);
+	}
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
