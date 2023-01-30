@@ -16,5 +16,9 @@ public interface IMedicamentoService {
 	void create(Medicamento medicamento);
 	
 	void update(Long idMedicamento,Medicamento medicamento);
-
+	
+	List<Medicamento> getByDenominacion(String denominacion);
+	
+	List<Medicamento> getByViaAdministracion(String via);
+	
 }
