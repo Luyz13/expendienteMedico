@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.levm.expendienteMedico.Service.IIndicacionService;
-import com.levm.expendienteMedico.entity.IndicacionGeneral;
+import com.levm.expendienteMedico.entity.Indicacion;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -32,21 +32,21 @@ public class IndicacionController {
 	}
 	
 	@GetMapping
-	public List<IndicacionGeneral> getAll() {
+	public List<Indicacion> getAll() {
 		log.info("Se ejecuta el proceso getAll de IndicacionController");
 		
 		return indicacionService.getAll();
 	}
 
 	@GetMapping("/{idIndicacion}")
-	public Optional<IndicacionGeneral> getById(@PathVariable int idIndicacion) {
+	public Optional<Indicacion> getById(@PathVariable int idIndicacion) {
 		log.info("Se ejecuta el proceso getById de IndicacionController");
 		
 		return indicacionService.getById(idIndicacion);
 	}
 	
 	@DeleteMapping("/{idIndicacion}")
-	public void delete(IndicacionGeneral indicacion) {
+	public void delete(Indicacion indicacion) {
 		log.info("Inicia el proceso delete de IndicacionController");
 		
 		indicacionService.delete(indicacion);
@@ -55,7 +55,7 @@ public class IndicacionController {
 	}
 	
 	@PostMapping
-	public void create(@Valid @RequestBody IndicacionGeneral indicacion) {
+	public void create(@Valid @RequestBody Indicacion indicacion) {
 		
 		log.info("Inicia el proceso create de IndicacionController");
 		
@@ -64,7 +64,7 @@ public class IndicacionController {
 		log.info("Termina el proceso create de IndicacionController");
 	}
 	@PutMapping("/{idIndicacion}")
-	public void update(@PathVariable int idIndicacion,@Valid @RequestBody IndicacionGeneral indicacion) {
+	public void update(@PathVariable int idIndicacion,@Valid @RequestBody Indicacion indicacion) {
 		log.info("Inicia el proceso update de IndicacionController");
 		
 		indicacionService.update(idIndicacion,indicacion);

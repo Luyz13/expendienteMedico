@@ -16,4 +16,8 @@ public interface IMedicoService {
 	void create(Medico medico);
 	
 	void update(int idMedico,Medico medico);
+	
+	List<Medico> getByUniversidad(String Universidad);
+	
+	Optional<Medico> getByCedula(String cedula);
 }

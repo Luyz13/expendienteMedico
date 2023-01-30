@@ -50,5 +50,14 @@ public class Medicamento {
 		this.frecuencia = frecuencia;
 		this.duracion = duracion;
 	}
+	public Medicamento(Long idMedicamento,String denominacion, String viaAdministracion, String frecuencia, String duracion) {
+		super();
+		this.idMedicamento=idMedicamento;
+		this.denominacion = denominacion;
+		this.viaAdministracion = viaAdministracion;
+		this.frecuencia = frecuencia;
+		this.duracion = duracion;
+	}
+	
 
 }

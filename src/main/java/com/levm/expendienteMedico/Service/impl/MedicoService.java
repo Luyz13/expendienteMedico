@@ -2,6 +2,7 @@ package com.levm.expendienteMedico.Service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -85,6 +86,21 @@ public class MedicoService implements IMedicoService {
 			log.info("Termina el proceso update del registro");
 		}
 		log.info("Termina el proceso update de MedicoService");
+	}
+
+	@Override
+	public List<Medico> getByUniversidad(String Universidad) {
+		return medicoRepository.findAll()
+				.stream()
+				.filter(medico -> medico.getUniversidad().compareTo(Universidad) == 0)
+				.collect(Collectors.toList());
+				
+	}
+
+	@Override
+	public Optional<Medico> getByCedula(String cedula) {
+		// TODO Auto-generated method stub
+		return medicoRepository.findBycedulaProfecional(cedula);
 	}
 
 }
