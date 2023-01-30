@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.levm.expendienteMedico.Service.impl.PacienteService;
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 import com.levm.expendienteMedico.entity.Paciente;
 
 import jakarta.validation.Valid;
@@ -80,7 +80,7 @@ public class PacienteController {
 		log.info("Termina el proceso update de PacienteController");
 	}
 	@PatchMapping("/{idPaciente}/addExpediente")
-	public void agregarExpediente(@PathVariable int idPaciente, @Valid @RequestBody ExpedienteMedico expediente)
+	public void agregarExpediente(@PathVariable int idPaciente, @Valid @RequestBody Expediente expediente)
 	{
 		log.info("Inicia el proceso agregarExpediente");
 		pacienteService.agregarExpediente(idPaciente,expediente);

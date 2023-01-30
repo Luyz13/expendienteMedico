@@ -21,7 +21,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @Entity
 @Table(name="indicaciones")
-public class IndicacionGeneral {
+public class Indicacion {
 	
 	@Id
 	@GeneratedValue
@@ -36,15 +36,17 @@ public class IndicacionGeneral {
 	@JoinColumn(name = "no_receta")
 	Receta receta;
 	
-	public IndicacionGeneral(int idIndicacion, String comentario) {
+	public Indicacion(int idIndicacion, String comentario) {
 		super();
 		this.idIndicacion = idIndicacion;
 		this.comentario = comentario;
 	}
+	public Indicacion(int idIndicacion) {
+		super();
+		this.idIndicacion = idIndicacion;
+	}
 
-
-
-	public IndicacionGeneral(String comentario) {
+	public Indicacion(String comentario) {
 		this.comentario = comentario;
 	}
 }

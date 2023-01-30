@@ -16,13 +16,20 @@ public class Paciente extends Persona{
 	
 	@OneToOne
 	@JoinColumn(name="expedienteId", referencedColumnName ="idExpediente")
-	private ExpedienteMedico expediente;
+	private Expediente expediente;
 	
-	
+	public Paciente(int Id,String nombre,String apellidoPat, String apellidoMat,String fechaNacimiento, char sexo) {
+		super(Id,nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
 
-	public Paciente(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+	}
+	
+	public Paciente(String nombre, String apellidoPat, String apellidoMat, String fechaNacimiento, char sexo) {
 		super(nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
 
+	}
+	public Paciente(int id)
+	{
+		super(id);
 	}
 	@Override
 	public boolean equals(Object obj) {

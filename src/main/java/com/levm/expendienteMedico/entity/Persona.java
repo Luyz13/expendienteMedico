@@ -12,7 +12,6 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -21,7 +20,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Getter
 @Setter
-@AllArgsConstructor
 @NoArgsConstructor
 @MappedSuperclass
 public class Persona {
@@ -46,9 +44,9 @@ public class Persona {
 	
 	@NotNull(message = "El sexo debe estar informado")
 	private char sexo;
-
 	
-	public Persona(String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+	public Persona(int id, String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
+		this.id = id;
 		this.nombre = nombre;
 		this.apellidoMat = apellidoMat;
 		this.apellidoPat = apellidoPat;
@@ -57,6 +55,18 @@ public class Persona {
 	}
 	
 	
+	public Persona(String nombre,String apellidoPat, String apellidoMat, String fechaNacimiento, char sexo) {
+		this.nombre = nombre;
+		this.apellidoMat = apellidoMat;
+		this.apellidoPat = apellidoPat;
+		this.fechaNacimiento = fechaNacimiento;
+		this.sexo = sexo;
+	}
+	
+	public Persona(int id) {
+		this.id = id;
+	}
+		
 	public String getNombreCompleto(){
 		StringBuilder sB = new StringBuilder();
 		sB.append(this.nombre)
@@ -75,10 +85,5 @@ public class Persona {
 		LocalDate fechaAct = LocalDate.now();
 		Period periodo = Period.between(fechaNac, fechaAct);
 		return periodo.getYears();
-	}
-
-
-	public Persona(int id) {
-		this.id = id;
 	}
 }

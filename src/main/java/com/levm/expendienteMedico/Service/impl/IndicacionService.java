@@ -7,8 +7,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.levm.expendienteMedico.Service.IIndicacionService;
-import com.levm.expendienteMedico.entity.IndicacionGeneral;
-import com.levm.expendienteMedico.repository.IIndicacionGeneralRepository;
+import com.levm.expendienteMedico.entity.Indicacion;
+import com.levm.expendienteMedico.entity.Receta;
+import com.levm.expendienteMedico.repository.IIndicacionRepository;
+import com.levm.expendienteMedico.repository.IRecetaRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,15 +18,18 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class IndicacionService implements IIndicacionService{
 		
-	private IIndicacionGeneralRepository indicacionRepository;
+	private IIndicacionRepository indicacionRepository;
+	private IRecetaRepository recetaRepository;
 
 	@Autowired
-	public IndicacionService(IIndicacionGeneralRepository indicacionRepository) {
+	public IndicacionService(IIndicacionRepository indicacionRepository,
+			IRecetaRepository recetaRepository) {
 		this.indicacionRepository = indicacionRepository;
+		this.recetaRepository = recetaRepository;
 	}
 
 	@Override
-	public List<IndicacionGeneral> getAll() {
+	public List<Indicacion> getAll() {
 		log.info("Se ejecuta el proceso getAll de ExpedienteService");
 
 		log.info("Se ejecuta el proceso findAll de IIndicacionGeneralRepository");
@@ -33,7 +38,7 @@ public class IndicacionService implements IIndicacionService{
 	}
 
 	@Override
-	public Optional<IndicacionGeneral> getById(int idIndicacion) {
+	public Optional<Indicacion> getById(int idIndicacion) {
 
 		log.info("Se ejecuta el proceso getById de ExpedienteService");	
 
@@ -43,7 +48,7 @@ public class IndicacionService implements IIndicacionService{
 	}
 
 	@Override
-	public void delete(IndicacionGeneral indicacion) {
+	public void delete(Indicacion indicacion) {
 		log.info("Inicia el proceso delete de ExpedienteService");
 
 		log.info("Inicia el proceso delete de IIndicacionGeneralRepository");
@@ -57,7 +62,7 @@ public class IndicacionService implements IIndicacionService{
 	}
 
 	@Override
-	public void create(IndicacionGeneral indicacion) {
+	public void create(Indicacion indicacion) {
 		log.info("Inicia el proceso create de ExpedienteService");
 
 		log.info("Inicia el proceso save de IIndicacionGeneralRepository"); 
@@ -71,7 +76,7 @@ public class IndicacionService implements IIndicacionService{
 	}
 
 	@Override
-	public void update(int idIndicacion,IndicacionGeneral indicacion) {
+	public void update(int idIndicacion,Indicacion indicacion) {
 		log.info("Inicia el proceso update de ExpedienteService");
 
 		log.info("Se valida la existencia del registro");
@@ -85,6 +90,18 @@ public class IndicacionService implements IIndicacionService{
 			log.info("Termina el proceso update del registro");
 		}
 		log.info("Termina el proceso update de ExpedienteService");
+	}
+
+	@Override
+	public void addRecetaTo(int idIndicacion, Receta receta) {
+		if(indicacionRepository.existsById(idIndicacion))
+		{
+			Indicacion indicacion = indicacionRepository.findById(idIndicacion).orElse(null);
+			receta = recetaRepository.findById(receta.getIdReceta()).orElse(null);
+			indicacion.setReceta( receta);
+			indicacionRepository.save(indicacion);
+		}
+		
 	}
 	
 	
