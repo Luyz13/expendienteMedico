@@ -24,7 +24,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import com.levm.expendienteMedico.Service.impl.PacienteService;
 import com.levm.expendienteMedico.entity.Paciente;
-import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
+import com.levm.expendienteMedico.repository.IExpedienteRepository;
 import com.levm.expendienteMedico.repository.IPacienteRepository;
 
 
@@ -37,7 +37,7 @@ public class PacienteServiceTest {
 	private IPacienteRepository pacienteRepository;
 	
 	@Mock
-	private IExpedienteMedicoRepository expedienteRepository;
+	private IExpedienteRepository expedienteRepository;
 	
 	@InjectMocks
 	private PacienteService pacienteService =

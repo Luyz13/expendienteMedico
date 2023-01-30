@@ -16,13 +16,13 @@ public class UserDetailServiceConfig {
 
         manager.createUser(
                 User.withUsername("luyz")
-                        .password(bCryptPasswordEncoder.encode("1234"))
+                        .password(bCryptPasswordEncoder.encode("user"))
                         .roles("USER")
                         .build());
 
         manager.createUser(
                 User.withUsername("admin")
-                        .password(bCryptPasswordEncoder.encode("admin123"))
+                        .password(bCryptPasswordEncoder.encode("admin"))
                         .roles("ADMIN")
                         .build()
         );

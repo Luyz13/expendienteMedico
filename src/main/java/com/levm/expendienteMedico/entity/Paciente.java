@@ -16,7 +16,7 @@ public class Paciente extends Persona{
 	
 	@OneToOne
 	@JoinColumn(name="expedienteId", referencedColumnName ="idExpediente")
-	private ExpedienteMedico expediente;
+	private Expediente expediente;
 	
 	public Paciente(int Id,String nombre,String apellidoPat, String apellidoMat,String fechaNacimiento, char sexo) {
 		super(Id,nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);

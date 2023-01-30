@@ -40,7 +40,7 @@ public class Receta {
 
 	@ManyToOne
 	@JoinColumn(name = "no_expediente")
-	ExpedienteMedico expedienteMedico;
+	Expediente expedienteMedico;
 	
 	@ManyToOne
 	@JoinColumn(name = "id_medico")

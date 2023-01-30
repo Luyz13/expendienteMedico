@@ -1,20 +1,25 @@
 package com.levm.expendienteMedico.Service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 
 public interface IExpedienteService {
 	
-	List<ExpedienteMedico> getAll();
+	List<Expediente> getAll();
 	
-	Optional<ExpedienteMedico> getById(Long idExpediente);
+	Optional<Expediente> getById(Long idExpediente);
 	
-	void delete(ExpedienteMedico expediente);
+	List<Expediente> getByfechaAltaLessThanEqual(Date fechaAlta);
 	
-	void create(ExpedienteMedico expediente);
+	List<Expediente> getByfechaAltaGreaterThanEqual(Date fechaAlta);
 	
-	void update( long idExpediente,ExpedienteMedico expediente);
+	void delete(Expediente expediente);
+	
+	void create(Expediente expediente);
+	
+	void update( long idExpediente,Expediente expediente);
 
 }

@@ -1,9 +1,11 @@
 package com.levm.expendienteMedico.Controller;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.levm.expendienteMedico.Service.IExpedienteService;
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
@@ -32,19 +34,19 @@ public class ExpedienteController {
 		this.expedienteService = expedienteService;
 	}
 	@GetMapping
-	public List<ExpedienteMedico> getAll() {
+	public ResponseEntity<List<?>> getAll() {
 		log.info("Se ejecuta el proceso getAll de ExpedienteController");
 		
-		return expedienteService.getAll();
+		return ResponseEntity.ok(expedienteService.getAll());
 	}
 	@GetMapping("/{idExpediente}")
-	public Optional<ExpedienteMedico> getById(@PathVariable Long idExpediente) {
+	public ResponseEntity<?> getById(@PathVariable Long idExpediente) {
 		log.info("Se ejecuta el proceso getById de ExpedienteController");
 		
-		return expedienteService.getById(idExpediente);
+		return ResponseEntity.ok( expedienteService.getById(idExpediente));
 	}
 	@DeleteMapping("/{idExpediente}")
-	public void delete(ExpedienteMedico expediente) {
+	public void delete(Expediente expediente) {
 		log.info("Inicia el proceso delete de ExpedienteController");
 		
 		expedienteService.delete(expediente);
@@ -52,15 +54,16 @@ public class ExpedienteController {
 		log.info("Termina el proceso delete de ExpedienteController");
 	}
 	@PostMapping 
-	public void create(@Valid @RequestBody ExpedienteMedico expediente) {
+	public ResponseEntity<?> create(@Valid @RequestBody Expediente expediente) {
 		log.info("Inicia el proceso create de ExpedienteController");
 		
 		expedienteService.create(expediente);
 		
-		log.info("Termina el proceso create de ExpedienteController");
+		return ResponseEntity
+				.created(URI.create("")).build();
 	}
 	@PutMapping("/{idExpediente}")
-	public void update(@PathVariable long idExpediente,@Valid @RequestBody ExpedienteMedico expediente) {
+	public void update(@PathVariable long idExpediente,@Valid @RequestBody Expediente expediente) {
 		log.info("Inicia el proceso update de ExpedienteController");
 		
 		expedienteService.update(idExpediente,expediente);

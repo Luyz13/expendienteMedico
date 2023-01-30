@@ -3,7 +3,7 @@ package com.levm.expendienteMedico.Service;
 import java.util.Collection;
 import java.util.List;
 
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 import com.levm.expendienteMedico.entity.Paciente;
 
 public interface IPacienteService {
@@ -20,6 +20,6 @@ public interface IPacienteService {
 
 	void actualizarPaciente(int idPaciente,Paciente paciente);
 	
-	void agregarExpediente(int idPaciente,ExpedienteMedico expediente);
+	void agregarExpediente(int idPaciente,Expediente expediente);
 
 }
