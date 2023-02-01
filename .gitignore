@@ -31,3 +31,5 @@ build/
 
 ### VS Code ###
 .vscode/
+#### MYSQL - Docker ####
+/mysql_data/
