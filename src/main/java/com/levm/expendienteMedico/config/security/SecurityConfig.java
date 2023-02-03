@@ -32,6 +32,9 @@ public class SecurityConfig {
                 .permitAll()
                 .requestMatchers(HttpMethod.GET,"/medicamento/**")
                 .permitAll()
+                /*Se agrego para probarlos desde Angular*/
+                .requestMatchers(HttpMethod.GET,"/paciente/**")
+                .permitAll()
                 .requestMatchers(HttpMethod.DELETE)
                 .hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST)

@@ -81,6 +81,7 @@ public class PacienteService implements IPacienteService{
 		{
 			log.info("Inicia el proceso update del registro");
 			paciente.setId(idPaciente);
+			paciente.setExpediente(pacienteRepository.findById(idPaciente).get().getExpediente());
 			pacienteRepository.save(paciente);
 			
 			log.info("Termina el proceso update del registro");

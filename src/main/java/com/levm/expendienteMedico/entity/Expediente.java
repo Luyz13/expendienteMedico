@@ -23,13 +23,13 @@ public class Expediente {
 	@GeneratedValue
 	private long idExpediente;
 	
-	private Date fechaAlta;
+	private String fechaAlta;
 	
-	private Date fechaActualizacion;
+	private String fechaActualizacion;
 	
 	
 
-	public Expediente(Date fechaAlta, Date fechaActualizacion) {
+	public Expediente(String fechaAlta, String fechaActualizacion) {
 		super();
 		this.fechaAlta = fechaAlta;
 		this.fechaActualizacion = fechaActualizacion;
