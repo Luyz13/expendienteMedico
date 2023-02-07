@@ -60,3 +60,4 @@ override.tf.json
 # No agregar configuraciones personales de CLI
 .terraformrc
 terraform.rc
+*.terraform.lock.hcl
