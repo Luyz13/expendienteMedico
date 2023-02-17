@@ -9,11 +9,15 @@ public interface IMedicoService {
 
 	List<Medico> getAll();
 	
-	Optional<Medico> getById(int medicoId);
+	Medico getById(int medicoId);
 	
 	void delete(Medico medico);
 	
-	void create(Medico medico);
+	Medico create(Medico medico);
 	
-	void update(int idMedico,Medico medico);
+	Medico update(int idMedico,Medico medico);
+	
+	List<Medico> getByUniversidad(String Universidad);
+	
+	Optional<Medico> getByCedula(String cedula);
 }

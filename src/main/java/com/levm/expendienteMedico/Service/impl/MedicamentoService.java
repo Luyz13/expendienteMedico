@@ -2,6 +2,7 @@ package com.levm.expendienteMedico.Service.impl;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -86,6 +87,23 @@ public class MedicamentoService implements IMedicamentoService {
 		}
 		
 		log.info("Termina el proceso update de MedicamentoService");
+	}
+
+	@Override
+	public List<Medicamento> getByDenominacion(String denominacion) {
+	
+		return medicamentoRepository.findAll()
+				.stream()
+				.filter( medicamento -> medicamento.getDenominacion().compareTo(denominacion)== 0)
+				.collect(Collectors.toList());
+	}
+
+	@Override
+	public List<Medicamento> getByViaAdministracion(String via) {
+		return medicamentoRepository.findAll()
+				.stream()
+				.filter( medicamento -> medicamento.getViaAdministracion().compareTo(via)== 0)
+				.collect(Collectors.toList());
 	}
 
 }

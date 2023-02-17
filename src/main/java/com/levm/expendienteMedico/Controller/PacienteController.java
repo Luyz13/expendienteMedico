@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.levm.expendienteMedico.Service.impl.PacienteService;
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 import com.levm.expendienteMedico.entity.Paciente;
 
 import jakarta.validation.Valid;
@@ -51,7 +51,7 @@ public class PacienteController {
 		
 		return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
 	}
-	@DeleteMapping("/{noExpediente}")
+	@DeleteMapping("/{id}")
 	public void eliminarPaciente(Paciente paciente) {
 		log.info("Inicia el proceso delete de PacienteController");
 		
@@ -71,16 +71,16 @@ public class PacienteController {
 				.created(URI.create("")).build();
 	}
 
-	@PutMapping("/{idPaciente}")
-	public void actualizarPaciente(@PathVariable int idPaciente,@Valid @RequestBody Paciente paciente) {
+	@PutMapping("/{id}")
+	public void actualizarPaciente(@PathVariable int id,@Valid @RequestBody Paciente paciente) {
 		log.info("Inicia el proceso update de PacienteController");
 		
-		pacienteService.actualizarPaciente(idPaciente,paciente);
+		pacienteService.actualizarPaciente(id,paciente);
 		
 		log.info("Termina el proceso update de PacienteController");
 	}
 	@PatchMapping("/{idPaciente}/addExpediente")
-	public void agregarExpediente(@PathVariable int idPaciente, @Valid @RequestBody ExpedienteMedico expediente)
+	public void agregarExpediente(@PathVariable int idPaciente, @Valid @RequestBody Expediente expediente)
 	{
 		log.info("Inicia el proceso agregarExpediente");
 		pacienteService.agregarExpediente(idPaciente,expediente);

@@ -28,16 +28,20 @@ public class Medico extends Persona {
 	@NotBlank(message ="La denominación no debe estar conformada por espacios")
 	private String universidad;
 	
-	public Medico(String cedulaProfecional, String universidad) {
-		super();
+	public Medico(int Id,String cedulaProfecional,String universidad,String nombre, String apellidoPaterno,String apellidoMaterno, String fechaNacimiento, char sexo) {
+		super(Id,nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento, sexo);
 		this.cedulaProfecional = cedulaProfecional;
 		this.universidad = universidad;
 	}
-
-	public Medico(String cedulaProfecional,String universidad,String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
-		super(nombre, apellidoMat, apellidoPat, fechaNacimiento, sexo);
+	
+	public Medico(String cedulaProfecional,String universidad,String nombre, String apellidoPaterno,String apellidoMaterno, String fechaNacimiento, char sexo) {
+		super(nombre,  apellidoPaterno,apellidoMaterno, fechaNacimiento, sexo);
 		this.cedulaProfecional = cedulaProfecional;
 		this.universidad = universidad;
+	}
+	
+	public Medico(int id) {
+		super(id);
 	}
 	@Override
 	public int hashCode() {
@@ -58,9 +62,5 @@ public class Medico extends Persona {
 		Medico other = (Medico) obj;
 		return Objects.equals(cedulaProfecional, other.cedulaProfecional)
 				&& Objects.equals(universidad, other.universidad);
-	}
-
-	public Medico(int id) {
-		super(id);
 	}
 }

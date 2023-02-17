@@ -1,5 +1,6 @@
 package com.levm.expendienteMedico.Service.impl;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -7,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.levm.expendienteMedico.Service.IExpedienteService;
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
-import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
+import com.levm.expendienteMedico.entity.Expediente;
+import com.levm.expendienteMedico.repository.IExpedienteRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -16,14 +17,14 @@ import lombok.extern.slf4j.Slf4j;
 @Service
 public class ExpedienteService implements IExpedienteService {
 		
-	private IExpedienteMedicoRepository expedienteRepository;
+	private IExpedienteRepository expedienteRepository;
 
 	@Autowired
-	public ExpedienteService(IExpedienteMedicoRepository expedienteRepository) {
+	public ExpedienteService(IExpedienteRepository expedienteRepository) {
 		this.expedienteRepository = expedienteRepository;
 	}
 
-	public List<ExpedienteMedico> getAll() {
+	public List<Expediente> getAll() {
 		log.info("Se ejecuta el proceso getAll de ExpedienteService");
 		
 		log.info("Se ejecuta el proceso findAll de IExpedienteMedicoRepository");
@@ -31,7 +32,7 @@ public class ExpedienteService implements IExpedienteService {
 		return expedienteRepository.findAll();
 	}
 
-	public Optional<ExpedienteMedico> getById(Long idExpediente) {
+	public Optional<Expediente> getById(Long idExpediente) {
 		
 		log.info("Se ejecuta el proceso getById de ExpedienteService");
 		
@@ -41,7 +42,7 @@ public class ExpedienteService implements IExpedienteService {
 		
 	}
 
-	public void delete(ExpedienteMedico expediente) {
+	public void delete(Expediente expediente) {
 		
 		log.info("Inicia el proceso delete de ExpedienteService");
 		
@@ -54,7 +55,7 @@ public class ExpedienteService implements IExpedienteService {
 		log.info("Termina el proceso delete de IExpedienteMedicoRepository");
 	}
 
-	public void create(ExpedienteMedico expediente) {
+	public void create(Expediente expediente) {
 		log.info("Inicia el proceso create de ExpedienteService");
 		
 		log.info("Inicia el proceso save de IExpedienteMedicoRepository");
@@ -66,7 +67,7 @@ public class ExpedienteService implements IExpedienteService {
 		log.info("Termina el proceso create de ExpedienteService");
 		
 	}
-	public void update( long idExpediente,ExpedienteMedico expediente) {
+	public void update( long idExpediente,Expediente expediente) {
 		log.info("Inicia el proceso update de ExpedienteService");
 		
 		log.info("Se valida la existencia del registro");
@@ -81,6 +82,18 @@ public class ExpedienteService implements IExpedienteService {
 		
 		log.info("Termina el proceso update de ExpedienteService");
 		
+	}
+
+	@Override
+	public List<Expediente> getByfechaAltaLessThanEqual(Date fechaAlta) {
+		
+		return expedienteRepository.findByfechaAltaLessThanEqual(fechaAlta);
+	}
+
+	@Override
+	public List<Expediente> getByfechaAltaGreaterThanEqual(Date fechaAlta) {
+		
+		return expedienteRepository.findByfechaAltaGreaterThanEqual(fechaAlta);
 	}
 	
 	

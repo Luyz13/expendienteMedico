@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.levm.expendienteMedico.entity.Paciente;
 
-@Repository
+//@Repository
 public class PacienteRepositoryImp implements PacienteRepository {
 	
 	@PersistenceContext

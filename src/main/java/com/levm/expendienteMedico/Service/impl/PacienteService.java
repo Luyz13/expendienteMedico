@@ -1,15 +1,16 @@
 package com.levm.expendienteMedico.Service.impl;
 
+import java.util.Collection;
 import java.util.List;
-import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.levm.expendienteMedico.Service.IPacienteService;
-import com.levm.expendienteMedico.entity.ExpedienteMedico;
+import com.levm.expendienteMedico.entity.Expediente;
 import com.levm.expendienteMedico.entity.Paciente;
-import com.levm.expendienteMedico.repository.IExpedienteMedicoRepository;
+import com.levm.expendienteMedico.repository.IExpedienteRepository;
 import com.levm.expendienteMedico.repository.IPacienteRepository;
 
 import lombok.extern.slf4j.Slf4j;
@@ -21,10 +22,10 @@ public class PacienteService implements IPacienteService{
 
 	
 	private IPacienteRepository pacienteRepository;
-	private IExpedienteMedicoRepository expedienteRepository;
+	private IExpedienteRepository expedienteRepository;
 	
 	@Autowired
-	public PacienteService(IPacienteRepository pacienteRepository,IExpedienteMedicoRepository expedienteRepository)
+	public PacienteService(IPacienteRepository pacienteRepository,IExpedienteRepository expedienteRepository)
 	{
 		this.pacienteRepository = pacienteRepository;
 		this.expedienteRepository = expedienteRepository;
@@ -38,14 +39,13 @@ public class PacienteService implements IPacienteService{
 		
 		return pacienteRepository.findAll();
 	}
-
-	public Optional<Paciente> buscarPaciente(int idPaciente) {
+	public Paciente buscarPaciente(int idPaciente) {
 		
 		log.info("Se ejecuta el proceso getById de PacienteService");
 
 		log.info("Se ejecuta el proceso findById de IPacienteRepository");
 		
-		return pacienteRepository.findById(idPaciente);
+		return pacienteRepository.findById(idPaciente).orElse(null);
 	}
 
 	public void eliminarPaciente(Paciente paciente) {
@@ -81,6 +81,7 @@ public class PacienteService implements IPacienteService{
 		{
 			log.info("Inicia el proceso update del registro");
 			paciente.setId(idPaciente);
+			paciente.setExpediente(pacienteRepository.findById(idPaciente).get().getExpediente());
 			pacienteRepository.save(paciente);
 			
 			log.info("Termina el proceso update del registro");
@@ -89,13 +90,24 @@ public class PacienteService implements IPacienteService{
 	}
 
 	@Override
-	public void agregarExpediente(int idPaciente, ExpedienteMedico expediente) {
+	public void agregarExpediente(int idPaciente, Expediente expediente) {
 		if(pacienteRepository.existsById(idPaciente)) {
 			Paciente paciente=pacienteRepository.findById(idPaciente).orElse(null);
-			expediente=expedienteRepository.findById(1l).orElse(null);
+			expediente=expedienteRepository.findById(expediente.getIdExpediente()).orElse(null);
 			paciente.setExpediente(expediente);
 			pacienteRepository.save((Paciente)paciente);
 		}
 		
+	}
+
+	@Override
+	public Collection<Paciente> findPacienteBySexo(char sexo) {
+	
+		return  pacienteRepository.findAll()
+				.stream()
+				.filter(paciente -> (Character.compare(paciente.getSexo(), sexo)==0))
+				.collect(Collectors.toList());
+				
+				
 	}
 }

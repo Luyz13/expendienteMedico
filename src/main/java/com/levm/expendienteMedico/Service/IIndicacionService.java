@@ -3,18 +3,21 @@ package com.levm.expendienteMedico.Service;
 import java.util.List;
 import java.util.Optional;
 
-import com.levm.expendienteMedico.entity.IndicacionGeneral;
+import com.levm.expendienteMedico.entity.Indicacion;
+import com.levm.expendienteMedico.entity.Receta;
 
 public interface IIndicacionService {
 	
-	List<IndicacionGeneral> getAll();
+	List<Indicacion> getAll();
 	
-	Optional<IndicacionGeneral> getById(int idIndicacion);
+	Optional<Indicacion> getById(int idIndicacion);
 	
-	void delete(IndicacionGeneral indicacion);
+	void delete(Indicacion indicacion);
 	
-	void create(IndicacionGeneral indicacion);
+	void create(Indicacion indicacion);
 	
-	void update(int idIndicacion, IndicacionGeneral indicacion);
+	void update(int idIndicacion, Indicacion indicacion);
+
+	void addRecetaTo(int idIndicacion, Receta receta);
 
 }
