@@ -43,7 +43,7 @@ public class SecurityConfig {
                 .requestMatchers(HttpMethod.GET,"/medicamento/**")
                 .permitAll()
                 /*Se agrego para probarlos desde Angular*/
-                .requestMatchers(HttpMethod.GET,"/paciente/**")
+                /*.requestMatchers(HttpMethod.GET,"/paciente/**")
                 .permitAll()
                 .requestMatchers(HttpMethod.POST,"/medico")
                 .permitAll()
@@ -93,6 +93,6 @@ public class SecurityConfig {
     	source.registerCorsConfiguration("/**", configuration);
 		return source;
     	
-    }*/
-}
+    }
+}*/
 
