@@ -48,8 +48,8 @@ public class Persona {
 	public Persona(int id, String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
 		this.id = id;
 		this.nombre = nombre;
-		this.apellidoMaterno = apellidoMat;
 		this.apellidoPaterno = apellidoPat;
+		this.apellidoMaterno = apellidoMat;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
 	}
