@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,9 +20,10 @@ import com.levm.expendienteMedico.entity.Medico;
 
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
-@Slf4j
+
 @RestController
 @RequestMapping("/medico")
+@Slf4j
 public class MedicoController {
 	
 	private IMedicoService medicoService;
@@ -39,15 +42,19 @@ public class MedicoController {
 		return medicoService.getAll();
 	}
 	
-	@GetMapping(value="/{medicoId}")
-	public Optional<Medico> getById(@PathVariable int medicoId) {
+	@GetMapping(value="/{id}")
+	public ResponseEntity<Medico> getById(@PathVariable int id) {
 		
 		log.info("Se ejecuta el proceso getById de MedicoController");		
-		
-		return medicoService.getById(medicoId);
+		Medico med = medicoService.getById(id);
+		if( med != null)
+		{
+			return new ResponseEntity<Medico>(med, HttpStatus.OK);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 	}
 	
-	@DeleteMapping("/{medicoId}")
+	@DeleteMapping("/{id}")
 	public void delete(Medico medico) {
 		
 		log.info("Inicia el proceso delete de MedicoController");
@@ -56,23 +63,24 @@ public class MedicoController {
 
 		log.info("Termina el proceso delete de MedicoController");
 	}
-
+	
 	@PostMapping
-	public void create(@Valid @RequestBody Medico medico) {
+	public ResponseEntity<?> create(@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso create de MedicoController");
-		
-		medicoService.create(medico);
-		
-		log.info("Termina el proceso create de MedicoController");
-		
+		try {
+			Medico _medico=medicoService.create(medico);
+			return new ResponseEntity<>(_medico,HttpStatus.CREATED);
+		} catch (Exception e) {
+			return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+		}		
 	}
-	@PutMapping("/{medicoId}")
-	public void update( @PathVariable int idMedico,@Valid @RequestBody Medico medico) {
+	@PutMapping("/{id}")
+	public ResponseEntity<?> update( @PathVariable int id,@Valid @RequestBody Medico medico) {
 		log.info("Inicia el proceso update de MedicoController");
 		
-		medicoService.update( idMedico,medico);
+		return new ResponseEntity<Medico>( medicoService.update( id,medico),HttpStatus.OK);
 
-		log.info("Termina el proceso update de MedicoController");
+		
 		
 	}
 }

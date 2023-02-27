@@ -5,12 +5,11 @@ import java.util.List;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 
-import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.levm.expendienteMedico.entity.Paciente;
 
-@Repository
+//@Repository
 public class PacienteRepositoryImp implements PacienteRepository {
 	
 	@PersistenceContext

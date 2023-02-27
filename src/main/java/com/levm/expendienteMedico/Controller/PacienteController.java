@@ -51,7 +51,7 @@ public class PacienteController {
 		
 		return ResponseEntity.ok(pacienteService.buscarPaciente(idPaciente));
 	}
-	@DeleteMapping("/{noExpediente}")
+	@DeleteMapping("/{id}")
 	public void eliminarPaciente(Paciente paciente) {
 		log.info("Inicia el proceso delete de PacienteController");
 		
@@ -71,11 +71,11 @@ public class PacienteController {
 				.created(URI.create("")).build();
 	}
 
-	@PutMapping("/{idPaciente}")
-	public void actualizarPaciente(@PathVariable int idPaciente,@Valid @RequestBody Paciente paciente) {
+	@PutMapping("/{id}")
+	public void actualizarPaciente(@PathVariable int id,@Valid @RequestBody Paciente paciente) {
 		log.info("Inicia el proceso update de PacienteController");
 		
-		pacienteService.actualizarPaciente(idPaciente,paciente);
+		pacienteService.actualizarPaciente(id,paciente);
 		
 		log.info("Termina el proceso update de PacienteController");
 	}

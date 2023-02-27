@@ -1,7 +1,5 @@
 package com.levm.expendienteMedico.entity;
 
-import java.util.Date;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -23,13 +21,13 @@ public class Expediente {
 	@GeneratedValue
 	private long idExpediente;
 	
-	private Date fechaAlta;
+	private String fechaAlta;
 	
-	private Date fechaActualizacion;
+	private String fechaActualizacion;
 	
 	
 
-	public Expediente(Date fechaAlta, Date fechaActualizacion) {
+	public Expediente(String fechaAlta, String fechaActualizacion) {
 		super();
 		this.fechaAlta = fechaAlta;
 		this.fechaActualizacion = fechaActualizacion;

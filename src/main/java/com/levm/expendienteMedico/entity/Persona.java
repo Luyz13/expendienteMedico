@@ -33,11 +33,11 @@ public class Persona {
 	
 	@NotEmpty(message = "El sexo debe estar informado")
 	@NotBlank(message ="El sexo no debe estar conformada por espacios")
-	private String apellidoMat;
+	private String apellidoMaterno;
 	
 	@NotEmpty(message = "El sexo debe estar informado")
 	@NotBlank(message ="El sexo no debe estar conformada por espacios")
-	private String apellidoPat;
+	private String apellidoPaterno;
 	
 	@Pattern(regexp = "^[0-9]{2}\\/[0-9]{2}\\/[0-9]{4}$")
 	private String fechaNacimiento;
@@ -48,8 +48,8 @@ public class Persona {
 	public Persona(int id, String nombre, String apellidoMat, String apellidoPat, String fechaNacimiento, char sexo) {
 		this.id = id;
 		this.nombre = nombre;
-		this.apellidoMat = apellidoMat;
-		this.apellidoPat = apellidoPat;
+		this.apellidoPaterno = apellidoPat;
+		this.apellidoMaterno = apellidoMat;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
 	}
@@ -57,8 +57,8 @@ public class Persona {
 	
 	public Persona(String nombre,String apellidoPat, String apellidoMat, String fechaNacimiento, char sexo) {
 		this.nombre = nombre;
-		this.apellidoMat = apellidoMat;
-		this.apellidoPat = apellidoPat;
+		this.apellidoMaterno = apellidoMat;
+		this.apellidoPaterno = apellidoPat;
 		this.fechaNacimiento = fechaNacimiento;
 		this.sexo = sexo;
 	}
@@ -71,9 +71,9 @@ public class Persona {
 		StringBuilder sB = new StringBuilder();
 		sB.append(this.nombre)
 		.append(" ")
-		.append(this.apellidoPat)
+		.append(this.apellidoPaterno)
 		.append(" ")
-		.append(this.apellidoMat);
+		.append(this.apellidoMaterno);
 		
 		return sB.toString();
 	}
