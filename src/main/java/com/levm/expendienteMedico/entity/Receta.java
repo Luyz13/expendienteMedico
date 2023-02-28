@@ -33,8 +33,6 @@ public class Receta {
 	@NotBlank(message ="El padecimiento no debe estar conformada por espacios")
 	private String padecimiento;
 	
-	@NotEmpty(message = "La alergias deben estar informado")
-	@NotBlank(message ="Las alergias no debe estar conformada por espacios")
 	private boolean alergias;
 	
 

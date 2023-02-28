@@ -20,6 +20,6 @@ public interface IExpedienteService {
 	
 	void create(Expediente expediente);
 	
-	void update( long idExpediente,Expediente expediente);
+	boolean update( long idExpediente,Expediente expediente);
 
 }

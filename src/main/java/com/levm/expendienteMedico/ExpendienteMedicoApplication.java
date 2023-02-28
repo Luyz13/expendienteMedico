@@ -13,15 +13,15 @@ public class ExpendienteMedicoApplication {
 		SpringApplication.run(ExpendienteMedicoApplication.class, args);
 	}
 
-	/*@Bean
+	@Bean
 	public WebMvcConfigurer corsConfigurer() {
 		return new WebMvcConfigurer() {
 			@Override
 			public void addCorsMappings(CorsRegistry registry) {
-				registry.addMapping("/**").allowedOrigins("http://localhost:4201").allowedMethods("*")
+				registry.addMapping("/**").allowedOrigins("http://localhost:4200").allowedMethods("*")
 						.allowedHeaders("*");
 			}
 		};
-	}*/
+	}
 
 }
