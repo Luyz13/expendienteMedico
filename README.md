@@ -25,7 +25,20 @@ https://github.com/users/Luyz13/projects/2/
 </ul>
 
 <p>De manera preliminar el diagrama que se obtuvo fue el siguiente:</p>
-<img src="" alt="Diagrama ER" width="400" height="400">
+<img src="expediente_levm.png" alt="Diagrama ER" width="500" height="500">
+<p>Dichas entidades fueron modeladas dentro del paquete <i>Entity</i>, en donde se uso JPA</p>
+
+## BEANS
+<p> La apliación que se construyo, sigue un arquitectura en capas. <br> Y en el presente proyecto se tienen 3 capas:</p>
+<ul>
+ <li>Controller</li>
+ <li>Service</li>
+ <li>Repository</li>
+</ul>
+<p>En el proyecto, cada entidad  tiene su clase Controller, Service, etc. Cada clase fue representada como un bean usando la notación correspondiente</p>
+
+## Monitoreo y Logs
+<p> Para el proyecto se uso la librería Slf4j, y se configuro para que en cada capa y cada metodo, nos avise que esta pasando mientras la aplicación se ejecuta</p>
 
 
 ## Despliegue:
