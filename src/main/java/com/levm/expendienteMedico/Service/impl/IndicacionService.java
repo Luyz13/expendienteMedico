@@ -30,11 +30,13 @@ public class IndicacionService implements IIndicacionService{
 
 	@Override
 	public List<Indicacion> getAll() {
-		log.info("Se ejecuta el proceso getAll de ExpedienteService");
-
 		log.info("Se ejecuta el proceso findAll de IIndicacionGeneralRepository");
-		
-		return indicacionRepository.findAll();
+		List<Indicacion> indicaciones =indicacionRepository.findAll();
+		if(indicaciones.isEmpty())
+		{
+			return null;
+		}
+		return indicaciones;
 	}
 
 	@Override
