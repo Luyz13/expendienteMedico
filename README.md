@@ -24,6 +24,9 @@ https://github.com/users/Luyz13/projects/2/
  <li>Indicacion</li>
 </ul>
 
+<p>De manera preliminar el diagrama que se obtuvo fue el siguiente:</p>
+<img src="" alt="Diagrama ER" width="400" height="400">
+
 
 ## Despliegue:
 <p>Para el desbliegue se tienen 2 maneras diferentes, usando Docker:</p>
