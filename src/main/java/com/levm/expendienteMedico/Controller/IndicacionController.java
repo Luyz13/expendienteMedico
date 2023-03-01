@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -32,10 +34,13 @@ public class IndicacionController {
 	}
 	
 	@GetMapping
-	public List<Indicacion> getAll() {
+	public ResponseEntity<List<Indicacion>> getAll() {
 		log.info("Se ejecuta el proceso getAll de IndicacionController");
-		
-		return indicacionService.getAll();
+		List<Indicacion> indicaciones = indicacionService.getAll();
+		if(indicaciones == null) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return new ResponseEntity<>(indicaciones,HttpStatus.OK);
 	}
 
 	@GetMapping("/{idIndicacion}")
