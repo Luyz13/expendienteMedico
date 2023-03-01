@@ -2,8 +2,10 @@ package com.levm.expendienteMedico.Controller;
 
 import java.net.URI;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,22 +37,31 @@ public class ExpedienteController {
 	@GetMapping
 	public ResponseEntity<List<?>> getAll() {
 		log.info("Se ejecuta el proceso getAll de ExpedienteController");
-		
-		return ResponseEntity.ok(expedienteService.getAll());
+		List<Expediente> expedientes = expedienteService.getAll();
+		if(expedientes.isEmpty()) {
+			return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		}
+		return ResponseEntity.ok(expedientes);
 	}
 	@GetMapping("/{idExpediente}")
 	public ResponseEntity<?> getById(@PathVariable Long idExpediente) {
 		log.info("Se ejecuta el proceso getById de ExpedienteController");
+		Optional<Expediente> expediente =expedienteService.getById(idExpediente);
+		if(expediente.isPresent()) {
+			return ResponseEntity.ok( expediente);
+		}
+		return new ResponseEntity<>(HttpStatus.NOT_FOUND);
 		
-		return ResponseEntity.ok( expedienteService.getById(idExpediente));
 	}
 	@DeleteMapping("/{idExpediente}")
-	public void delete(Expediente expediente) {
-		log.info("Inicia el proceso delete de ExpedienteController");
+	public ResponseEntity<?> delete(Expediente expediente) {
+		log.info("Se ejecuta el proceso delete de ExpedienteController");
 		
 		expedienteService.delete(expediente);
 		
-		log.info("Termina el proceso delete de ExpedienteController");
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+		
+		
 	}
 	@PostMapping 
 	public ResponseEntity<?> create(@Valid @RequestBody Expediente expediente) {
@@ -62,12 +73,18 @@ public class ExpedienteController {
 				.created(URI.create("")).build();
 	}
 	@PutMapping("/{idExpediente}")
-	public void update(@PathVariable long idExpediente,@Valid @RequestBody Expediente expediente) {
-		log.info("Inicia el proceso update de ExpedienteController");
+	public ResponseEntity<?> update(@PathVariable long idExpediente,@Valid @RequestBody Expediente expediente) {
+		log.info("Se ejecuta el proceso update de ExpedienteController");
 		
-		expedienteService.update(idExpediente,expediente);
+		if(expedienteService.update(idExpediente,expediente))
+		{
+			return new ResponseEntity<>(HttpStatus.OK);
+		}
+		else
+			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+
 		
-		log.info("Termina el proceso update de ExpedienteController");
+		
 	}
 	
 	

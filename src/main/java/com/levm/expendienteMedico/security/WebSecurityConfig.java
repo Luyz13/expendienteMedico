@@ -160,7 +160,7 @@ public class WebSecurityConfig { // extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable()
         .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
-        .authorizeRequests().requestMatchers("/auth/**").anonymous()
+        .authorizeRequests().requestMatchers(HttpMethod.POST,"/auth/**").anonymous()
         .requestMatchers(HttpMethod.GET,"/medico")
         .permitAll()
         .requestMatchers(HttpMethod.GET,"/medico/**")

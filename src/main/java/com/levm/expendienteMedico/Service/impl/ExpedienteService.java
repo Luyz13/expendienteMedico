@@ -67,7 +67,7 @@ public class ExpedienteService implements IExpedienteService {
 		log.info("Termina el proceso create de ExpedienteService");
 		
 	}
-	public void update( long idExpediente,Expediente expediente) {
+	public boolean update( long idExpediente,Expediente expediente) {
 		log.info("Inicia el proceso update de ExpedienteService");
 		
 		log.info("Se valida la existencia del registro");
@@ -77,10 +77,11 @@ public class ExpedienteService implements IExpedienteService {
 			log.info("Inicia el proceso update del registro");
 			expediente.setIdExpediente(idExpediente);
 			expedienteRepository.save(expediente);
-			log.info("Termina el proceso update del registro");
+			return true;
 		}
 		
-		log.info("Termina el proceso update de ExpedienteService");
+		log.info("No existe");
+		return false;
 		
 	}
 
