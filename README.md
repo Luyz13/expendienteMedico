@@ -38,8 +38,17 @@ https://github.com/users/Luyz13/projects/2/
 <p>En el proyecto, cada entidad  tiene su clase Controller, Service, etc. Cada clase fue representada como un bean usando la notación correspondiente</p>
 
 ## Monitoreo y Logs
-<p> Para el proyecto se uso la librería Slf4j, y se configuro para que en cada capa y cada metodo, nos avise que esta pasando mientras la aplicación se ejecuta</p>
+<p> Para el proyecto se uso la librería Slf4j, y se configuro para que en cada capa y cada metodo, nos avise que esta pasando mientras la aplicación se ejecuta.</p>
 
+## Lombok
+<p> Se indentifico y refactorizo el proyecto para simplificar el código</p>
+<p>Las notaciones que se usaron fueron:</p>
+<ul>
+ <li>@Getter</li>
+ <li>@Setter</li>
+ <li>@AllArgsConstructor</li>
+ <li>@NoArgsConstructor</li>
+</ul>
 
 ## Despliegue:
 <p>Para el desbliegue se tienen 2 maneras diferentes, usando Docker:</p>
