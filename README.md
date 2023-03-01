@@ -26,7 +26,7 @@ https://github.com/users/Luyz13/projects/2/
 
 <p>De manera preliminar el diagrama que se obtuvo fue el siguiente:</p>
 <img src="expediente_levm.png" alt="Diagrama ER" width="500" height="500">
-<p>Dichas entidades fueron modeladas dentro del paquete <i>Entity</i>, en donde se uso JPA</p>
+<p>Dichas entidades fueron modeladas dentro del paquete <i>Entity</i>, en donde se uso JPA.</p>
 
 ## BEANS
 <p> La apliación que se construyo, sigue un arquitectura en capas. <br> Y en el presente proyecto se tienen 3 capas:</p>
@@ -35,13 +35,13 @@ https://github.com/users/Luyz13/projects/2/
  <li>Service</li>
  <li>Repository</li>
 </ul>
-<p>En el proyecto, cada entidad  tiene su clase Controller, Service, etc. Cada clase fue representada como un bean usando la notación correspondiente</p>
+<p>En el proyecto, cada entidad  tiene su clase Controller, Service, etc. Cada clase fue representada como un bean usando la notación correspondiente.</p>
 
 ## Monitoreo y Logs
 <p> Para el proyecto se uso la librería Slf4j, y se configuro para que en cada capa y cada metodo, nos avise que esta pasando mientras la aplicación se ejecuta.</p>
 
 ## Lombok
-<p> Se indentifico y refactorizo el proyecto para simplificar el código</p>
+<p> Se indentifico y refactorizo el proyecto para simplificar el código.</p>
 <p>Las notaciones que se usaron fueron:</p>
 <ul>
  <li>@Getter</li>
@@ -59,32 +59,39 @@ https://github.com/users/Luyz13/projects/2/
  <li>@NotNull</li>
 </ul>
 
-## Manejo de Errores.
-<p> Se definieron 3 formas de manejar Errores:</p>
+## Manejo de Errores
+
+<p> Se definieron 3 formas de manejar Errores</p>
 <ul>
- <li>handleMethodArgumentNotValid:</li>
+ <li>handleMethodArgumentNotValid</li>
  <p>Nos sirve para regresar como respuesta un mensaje en caso de que no se cumplan con los criterios de Spring Validation</p>
  <li>handleHttpRequestMethodNotSupported</li>
  <p>Nos sirve para regresar una respuesta en caso de que se quiera consumir un endpoint no definido en nuestros controladores</p>
  <li>Exception</li>
- <p> Para manjear errores generales</p>
+ <p>Para manjear errores generales</p>
 </ul>
 
 ## Security
-<p> Inicialmente se definio una politica de accesso, en donde existen 2 roles Administradores y Usuario.<p>
- <ul>
- <li>Admin</li>
-  <p>Solo los usuarios que tengan este rol podran hacer cambios en BD, es decir crear, modificar y eliminar</p>
- <li>User</li>
-  <p>Solo podran leer información</p>
-  <li>Anonimo</li>
-  <p>Este no es un rol pero se configuraron las politicas para que cualquier rol pudieran leer la información de todos y buscar uno para los endpoints de Medicos y Medicmanetos</p>
+
+<p>Inicialmente se definio una politica de accesso, en donde existen 2 roles Administradores y Usuario.</p>
+<p>En donde cada usuario tiene una autenticación basica con usuario y contrasena.</p>
+<ul>
+ <li>Admin:</li>
+  <p>Solo los usuarios que tengan este rol podran hacer cambios en BD, es decir crear, modificar y eliminar.</p>
+ <li>User:</li>
+  <p>Solo podran leer información.</p>
+  <li>Anonimo:</li>
+  <p>Este no es un rol pero se configuraron las politicas para que cualquier rol pudieran leer la información de todos y buscar uno en particular para los endpoints de Medicos y Medicmanetos.</p>
 </ul>
-<p>Esto es importante ya que bajo este criterio se le dio prioridad de lado del Frontend para abordar el modulo de Medicos</p>
+<p>Esto es importante ya que bajo este criterio se le dio prioridad de lado del Frontend para abordar el modulo de Medicos.</p>
+<p>Sin embargo al realizar <b>la integración con Angular e Implementar JWT</b> la configuración echa previamente se  <i>rompio</i> por lo que se tiene una configuración en donde solo los usuarios que se registren y tenga un <b> token valido</b> podran realizar las operaciones que realizen cambios sobre las Base de Datos.</p>
+
 ## Test Unitarios
-<p>Se aplicaron algunos test sobre la capa de Service, que es la que corresponde a la Logica del Negocio. <br> Algunas pruebas podian ser repetitivas por lo cual se tomo uno o dos metodos por cada Endpoint</p>
+
+<p>Se aplicaron algunos test sobre la capa de Service, que es la que corresponde a la Logica del Negocio. <br> Algunas pruebas podian ser repetitivas por lo cual se tomo uno o dos metodos por cada Endpoint.</p>
  
 ## Despliegue:
+
 <p>Para el desbliegue se tienen 2 maneras diferentes, usando Docker:</p>
 <ol>
  <li>Docker Compose:</li>
@@ -96,13 +103,5 @@ https://github.com/users/Luyz13/projects/2/
 </ol>
 
 ## CI & CD
-<p> Se uso jenkins, para que cada vez que hubiera un cambio se ejecutara un pipeline en donde se iba compilar el código, hacer una imagen docker y hacer un despligue con docker compose</p>
-<p>Quedo pendiente aplicar pruebas al código con Sonar</p>
-
-
-
-
-
-  
-  
-
+<p> Se uso jenkins, para que cada vez que hubiera un cambio se ejecutara un pipeline en donde se iba compilar el código, hacer una imagen docker y hacer un despligue con docker compose.</p>
+<p>Quedo pendiente aplicar pruebas al código con Sonar.</p>
